@@ -26,11 +26,11 @@ footer.page-footer {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* label text color on login form*/
+/* label text color on login/signup forms*/
 form > p > input {
   color: white;
 }
-/* label underline focus color on login form */
+/* label underline focus color on login/signup forms */
 form > p > input:focus {
   border-bottom: 1px solid #b71c1c !important;
   box-shadow: 0 1px 0 0 #b71c1c !important;
