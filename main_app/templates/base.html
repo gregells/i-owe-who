@@ -38,6 +38,14 @@
     {% endblock %}
   </main>
   <footer class="page-footer red darken-4">
+    <div class="left">
+      &nbsp;
+      {% if user.is_authenticated %}
+        Signed in as <em>{{ user.username }}</em>.
+      {% else %}
+        Not signed in.
+      {% endif %}
+    </div>
     <div class="right">All Rights Reserved, &copy; 2025 I Owe Who? &nbsp;</div>
   </footer>
 </body>
