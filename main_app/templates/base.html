@@ -18,6 +18,16 @@
         </ul>
         <ul class="right">
           <li><a href="/about">About</a></li>
+          {% if user.is_authenticated %}
+            <li>
+              <form method="POST" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit" id="logout-btn">Log Out</button>
+              </form>
+            </li>
+          {% else %}
+            <li><a href="{% url 'login' %}">Log In</a></li>
+          {% endif %}
         </ul>
       </div>
     </nav>
