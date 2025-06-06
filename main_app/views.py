@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.db.models import Q
+from .models import Ledger
 
 # Create your views here.
 def home(request):
@@ -28,3 +30,11 @@ def signup(request):
     form = UserCreationForm()
     context = { 'form': form, 'error_message': error_message }
     return render(request, 'registration/signup.html', context)
+
+
+def ledgers_index(request):
+    # Get all ledgers where the current user is either the creator or a member:
+    ledgers = Ledger.objects.filter(Q(creator=request.user) | Q(members=request.user))
+    return render(request, 'ledgers/index.html', {
+        'ledgers': ledgers
+    })

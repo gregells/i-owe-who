@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>My Ledgers</h1>
+
+{% for ledger in ledgers %}
+  <div class="card grey darken-3">
+    <div class="card-content">
+      <span class="card-title">{{ ledger.name }}</span>
+      <p>Description: {{ ledger.description }}</p>
+      <p>Currency: {{ ledger.currency }}</p>
+      <p>Created at: {{ ledger.created_at }}</p>
+      <p>Created by: {{ ledger.creator }}</p>
+      <p>Members:
+        {% if ledger.members.count > 0 %}
+          {{ ledger.members.all|join:', ' }}
+        {% else %}
+          No members yet.
+        {% endif %}
+      </p>
+    </div>
+  </div>
+{% endfor %}
+
+{% endblock %}
