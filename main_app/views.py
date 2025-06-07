@@ -38,3 +38,13 @@ def ledgers_index(request):
     return render(request, 'ledgers/index.html', {
         'ledgers': ledgers
     })
+
+
+def ledgers_detail(request, ledger_id):
+    ledger = Ledger.objects.get(id=ledger_id)
+    # Redirect back to index page if user is not the creator or a member of this ledger:
+    if request.user != ledger.creator and request.user not in ledger.members.all():
+        return redirect('ledgers_index')
+    return render(request, 'ledgers/detail.html', {
+        'ledger': ledger
+    })
