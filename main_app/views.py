@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.db.models import Q
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 from .models import Ledger
 
 # Create your views here.
@@ -61,3 +61,8 @@ class LedgerCreate(CreateView):
         form.instance.creator = self.request.user
         # Pass control back to the superclass CreateView's form_valid() method to do its job:
         return super().form_valid(form)
+    
+
+class LedgerUpdate(UpdateView):
+    model = Ledger
+    fields = ['name', 'description', 'currency']

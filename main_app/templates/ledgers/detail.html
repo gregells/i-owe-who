@@ -18,6 +18,9 @@
       {% endif %}
     </p>
   </div>
+  <div class="card-action">
+    <a href="{% url 'ledgers_update' ledger.id %}">Edit</a>
+  </div>
 </div>
 
 {% endblock %}

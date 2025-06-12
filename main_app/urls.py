@@ -8,4 +8,5 @@ urlpatterns = [
     path('ledgers/', views.ledgers_index, name='ledgers_index'),
     path('ledgers/<int:ledger_id>/', views.ledgers_detail, name='ledgers_detail'),
     path('ledgers/create/', views.LedgerCreate.as_view(), name='ledgers_create'),
+    path('ledgers/<int:pk>/update/', views.LedgerUpdate.as_view(), name='ledgers_update'),
 ]

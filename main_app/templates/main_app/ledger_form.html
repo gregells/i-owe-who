@@ -1,12 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Add Ledger</h1>
+{% if object %}
+  <h1>Edit Ledger</h1>
+{% else %}
+  <h1>Add Ledger</h1>
+{% endif %}
 
 <form action="" method="POST">
   {% csrf_token %}
   {{ form.as_p }}
-  <button type="submit" class="btn red darken-4">Add Ledger</button>
+  
+  {% if object %}
+    <button type="submit" class="btn red darken-4">Save Changes</button>
+    {% else %}
+    <button type="submit" class="btn red darken-4">Add Ledger</button>
+  {% endif %}
 </form>
 
 <script>
