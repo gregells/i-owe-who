@@ -58,7 +58,7 @@ class LedgerCreate(CreateView):
 
     # Override the inherited method called when a valid form is submitted:
     def form_valid(self, form):
-        # Assign the logged in user (self.request.user) as the ledgers creator and member:
+        # Assign the logged in user (self.request.user) as the ledgers creator:
         form.instance.creator = self.request.user
         # Pass control back to the superclass CreateView's form_valid() method to do its job:
         return super().form_valid(form)
