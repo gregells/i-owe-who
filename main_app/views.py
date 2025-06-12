@@ -53,7 +53,6 @@ def ledgers_detail(request, ledger_id):
 
 class LedgerCreate(CreateView):
     model = Ledger
-    # fields = '__all__'
     fields = ['name', 'description', 'currency']
 
     # Override the inherited method called when a valid form is submitted:
