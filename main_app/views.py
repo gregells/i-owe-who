@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.db.models import Q
+from django.views.generic.edit import CreateView
 from .models import Ledger
 
 # Create your views here.
@@ -48,3 +49,16 @@ def ledgers_detail(request, ledger_id):
     return render(request, 'ledgers/detail.html', {
         'ledger': ledger
     })
+
+
+class LedgerCreate(CreateView):
+    model = Ledger
+    # fields = '__all__'
+    fields = ['name', 'description', 'currency']
+
+    # Override the inherited method called when a valid form is submitted:
+    def form_valid(self, form):
+        # Assign the logged in user (self.request.user) as the ledgers creator and member:
+        form.instance.creator = self.request.user
+        # Pass control back to the superclass CreateView's form_valid() method to do its job:
+        return super().form_valid(form)

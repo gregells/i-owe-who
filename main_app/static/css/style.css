@@ -26,13 +26,37 @@ footer.page-footer {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* label text color on login/signup forms*/
-form > p > input {
+/* text color in forms */
+form > p > input,
+form > p > textarea,
+form > p > div > input {
   color: white;
 }
-/* label underline focus color on login/signup forms */
-form > p > input:focus {
+
+/* bottom border color on focus in forms */
+form > p > input:focus,
+form > p > textarea:focus,
+form > p > div  > input:focus {
   border-bottom: 1px solid #b71c1c !important;
   box-shadow: 0 1px 0 0 #b71c1c !important;
 }
 
+/* text color for dropdown list in forms */
+form > p > div > ul > li > span {
+  color: white !important;
+  background-color: #424242;
+}
+
+/* background color on hover for dropdown list in forms */
+form > p > div > ul > li > span:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* background color for dropdown list in forms (leaks through on animation) */
+form > p > div > ul {
+  background-color: #424242 !important;
+}
+
+svg {
+  fill: #9E9E9E !important;
+}

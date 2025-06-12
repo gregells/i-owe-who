@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Add Ledger</h1>
+
+<form action="" method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn red darken-4">Add Ledger</button>
+</form>
+
+<script>
+  // Initialise the select element:
+  const selectEl = document.getElementById('id_currency');
+  M.FormSelect.init(selectEl);
+</script>
+{% endblock %}
