@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.db.models import Q
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Ledger
 
 # Create your views here.
@@ -66,3 +66,8 @@ class LedgerCreate(CreateView):
 class LedgerUpdate(UpdateView):
     model = Ledger
     fields = ['name', 'description', 'currency']
+
+
+class LedgerDelete(DeleteView):
+    model = Ledger
+    success_url = '/ledgers'
