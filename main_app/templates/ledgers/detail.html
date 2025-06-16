@@ -23,5 +23,33 @@
     <a href="{% url 'ledgers_delete' ledger.id %}">Delete</a>
   </div>
 </div>
+<div>
+  <table class="highlight">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Amount</th>
+        <th>Name</th>
+        <th>User</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if ledger.expense_set.count > 0 %}
+        {% for expense in ledger.expense_set.all %}
+          <tr>
+            <td>{{expense.date}}</td>
+            <td>${{expense.amount}}</td>
+            <td>{{expense.name}}</td>
+            <td>{{expense.user}}</td>
+          </tr>
+        {% endfor %}
+      {% else %}
+        <tr>
+          <td colspan="4" class="center-align">No expenses added yet.</td>
+        </tr>
+      {% endif %}
+    </tbody>
+  </table>
+</div>
 
 {% endblock %}
