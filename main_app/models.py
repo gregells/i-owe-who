@@ -3,14 +3,14 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 
 CURRENCIES = (
-    ('AUD', 'Australian Dollar'),
-    ('CAD', 'Canadian Dollar'),
-    ('EUR', 'Euro'),
-    ('GBP', 'British Pound'),
-    ('JPY', 'Japanese Yen'),
-    ('NZD', 'New Zealand Dollar'),
-    ('USD', 'United States Dollar'),
-    ('OTH', 'Other Currency'),
+    ('AUD', 'Australian Dollar - $'),
+    ('CAD', 'Canadian Dollar - $'),
+    ('EUR', 'Euro - €'),
+    ('GBP', 'British Pound - £'),
+    ('JPY', 'Japanese Yen - ¥'),
+    ('NZD', 'New Zealand Dollar - $'),
+    ('USD', 'United States Dollar - $'),
+    ('OTH', 'Other Currency - $'),
 )
 
 # Create your models here.

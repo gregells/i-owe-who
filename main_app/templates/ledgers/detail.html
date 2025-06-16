@@ -7,7 +7,7 @@
   <div class="card-content">
     <span class="card-title">{{ ledger.name }}</span>
     <p>Description: {{ ledger.description|linebreaks }}</p>
-    <p>Currency: {{ ledger.currency }}</p>
+    <p>Currency: {{ ledger.get_currency_display }}</p>
     <p>Created at: {{ ledger.created_at }}</p>
     <p>Created by: {{ ledger.creator }}</p>
     <p>Members:
@@ -38,7 +38,7 @@
         {% for expense in ledger.expense_set.all %}
           <tr>
             <td>{{expense.date}}</td>
-            <td>${{expense.amount}}</td>
+            <td>{{ ledger.get_currency_display|slice:"-1:" }}{{expense.amount}}</td>
             <td>{{expense.name}}</td>
             <td>{{expense.user}}</td>
           </tr>
