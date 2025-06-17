@@ -60,3 +60,41 @@ form > p > div > ul {
 svg {
   fill: #9E9E9E !important;
 }
+
+.modal {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.datepicker-date-display {
+  background-color: #b71c1c;
+}
+
+.datepicker-calendar-container {
+  background-color: #424242;
+}
+
+.select-wrapper input.select-dropdown {
+  color: white;
+}
+
+button.datepicker-cancel,
+button.datepicker-done {
+  color: #b71c1c;
+  font-weight: bold;
+}
+
+.datepicker-table td.is-today {
+  color: #b71c1c;
+}
+.datepicker-table td.is-selected {
+  background-color: #b71c1c;
+  color: white;
+}
+
+ul.dropdown-content.select-dropdown {
+  background-color: #424242;
+}
+
+ul.dropdown-content.select-dropdown > li > span {
+  color: white;
+}
