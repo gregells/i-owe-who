@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.db.models import Q
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Ledger
+from .forms import ExpenseForm
 
 # Create your views here.
 def home(request):
@@ -46,8 +47,12 @@ def ledgers_detail(request, ledger_id):
     # Redirect back to index page if user is not the creator or a member of this ledger:
     if request.user != ledger.creator and request.user not in ledger.members.all():
         return redirect('ledgers_index')
+    
+    # Create an ExpenseForm instance to be used in the template:
+    expense_form = ExpenseForm()
     return render(request, 'ledgers/detail.html', {
-        'ledger': ledger
+        'ledger': ledger,
+        'expense_form': expense_form
     })
 
 
@@ -71,3 +76,20 @@ class LedgerUpdate(UpdateView):
 class LedgerDelete(DeleteView):
     model = Ledger
     success_url = '/ledgers'
+
+
+def add_expense(request, ledger_id):
+    # Create an ExpenseForm instance using the data from the request:
+    expense_form = ExpenseForm(request.POST)
+    # Check if the form is valid:
+    if expense_form.is_valid():
+        # Don't save the form to the database until the ledger and user are set:
+        # Note: saving the form with commit=False returns an in-memory model
+        #   object that has not been saved to the database yet.
+        new_expense = expense_form.save(commit=False)
+        # Set the ledger and user for the new expense:
+        new_expense.ledger_id = ledger_id
+        new_expense.user_id = request.user.id
+        # Now save the new expense to the database:
+        new_expense.save()
+    return redirect('ledgers_detail', ledger_id=ledger_id)        

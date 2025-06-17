@@ -23,6 +23,13 @@
     <a href="{% url 'ledgers_delete' ledger.id %}">Delete</a>
   </div>
 </div>
+
+<form action="{% url 'add_expense' ledger.id %}" method="POST">
+  {% csrf_token %}
+  {{ expense_form.as_p }}
+  <button type="submit" class="btn red darken-4">Add Expense</button>
+</form>
+
 <div>
   <table class="highlight">
     <thead>
@@ -51,5 +58,15 @@
     </tbody>
   </table>
 </div>
+
+<script>
+  const dateEl = document.getElementById('id_date');
+  M.Datepicker.init(dateEl, {
+    format: 'yyyy-mm-dd',
+    defaultDate: new Date(),
+    setDefaultDate: true,
+    autoClose: true
+  });
+</script>
 
 {% endblock %}
