@@ -43,5 +43,8 @@ class Expense(models.Model):
     def __str__(self):
         return f"{self.name} - {self.amount} {self.ledger.currency}"
     
+    class Meta:
+        ordering = ['-date']
+    
     # def get_absolute_url(self):
     #     return reverse('ledgers_detail', kwargs={'ledger_id': self.ledger.id})
