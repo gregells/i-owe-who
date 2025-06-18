@@ -24,9 +24,9 @@
   </div>
 </div>
 
-<a class="btn red darken-4 waves-effect waves-light modal-trigger" href="#form-modal">
+<button data-target="form-modal" class="btn red darken-4 waves-effect waves-light modal-trigger">
   Add a new expense
-</a>
+</button>
 
 <div id="form-modal" class="modal bottom-sheet">
   <form action="{% url 'add_expense' ledger.id %}" method="POST" class="modal-content">
