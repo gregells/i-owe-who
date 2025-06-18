@@ -24,16 +24,18 @@
   </div>
 </div>
 
-<button data-target="form-modal" class="btn red darken-4 waves-effect waves-light modal-trigger">
-  Add a new expense
-</button>
+<div class="row">
+  <button data-target="form-modal" class="btn red darken-4 waves-effect waves-light modal-trigger col s12">
+    Add a new expense
+  </button>
+</div>
 
 <div id="form-modal" class="modal bottom-sheet">
-  <form action="{% url 'add_expense' ledger.id %}" method="POST" class="modal-content">
+  <form action="{% url 'add_expense' ledger.id %}" method="POST" class="modal-content row">
     <h5>Enter new expense:</h5>
     {% csrf_token %}
     {{ expense_form.as_p }}
-    <button type="submit" class="btn red darken-4 waves-effect waves-light">Add Expense</button>
+    <button type="submit" class="btn red darken-4 waves-effect waves-light col s12">Add Expense</button>
   </form>
 </div>
 
