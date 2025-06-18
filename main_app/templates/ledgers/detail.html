@@ -24,11 +24,18 @@
   </div>
 </div>
 
-<form action="{% url 'add_expense' ledger.id %}" method="POST">
-  {% csrf_token %}
-  {{ expense_form.as_p }}
-  <button type="submit" class="btn red darken-4">Add Expense</button>
-</form>
+<a class="btn red darken-4 waves-effect waves-light modal-trigger" href="#form-modal">
+  Add a new expense
+</a>
+
+<div id="form-modal" class="modal bottom-sheet">
+  <form action="{% url 'add_expense' ledger.id %}" method="POST" class="modal-content">
+    <h5>Enter new expense:</h5>
+    {% csrf_token %}
+    {{ expense_form.as_p }}
+    <button type="submit" class="btn red darken-4 waves-effect waves-light">Add Expense</button>
+  </form>
+</div>
 
 <div>
   <table class="highlight">
@@ -67,6 +74,8 @@
     setDefaultDate: true,
     autoClose: true
   });
+  const modalEl = document.getElementById('form-modal');
+  M.Modal.init(modalEl);
 </script>
 
 {% endblock %}

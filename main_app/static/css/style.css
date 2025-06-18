@@ -65,6 +65,11 @@ svg {
   background-color: rgba(0, 0, 0, 0);
 }
 
+.modal.bottom-sheet {
+  background-color: #424242;
+  max-height: 60%;
+}
+
 .datepicker-date-display {
   background-color: #b71c1c;
 }
