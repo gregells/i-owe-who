@@ -53,10 +53,10 @@
       {% if ledger.expense_set.count > 0 %}
         {% for expense in ledger.expense_set.all %}
           <tr>
-            <td>{{expense.date}}</td>
-            <td>{{ ledger.get_currency_display|slice:"-1:" }}{{expense.amount}}</td>
-            <td>{{expense.name}}</td>
-            <td>{{expense.user}}</td>
+            <td>{{ expense.date }}</td>
+            <td>{{ ledger.get_currency_display|slice:"-1:" }}{{ expense.amount }}</td>
+            <td>{{ expense.name }}</td>
+            <td>{{ expense.user }}</td>
           </tr>
         {% endfor %}
       {% else %}
