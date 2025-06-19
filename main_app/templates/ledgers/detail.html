@@ -55,9 +55,21 @@
           <tr>
             <td nowrap>{{ expense.date|date:"Y-m-d" }}</td>
             <td>{{ ledger.get_currency_display|slice:"-1:" }}{{ expense.amount }}</td>
-            <td>{{ expense.name }}</td>
+            <td><a class="modal-trigger" href="#modal{{ forloop.counter }}">{{ expense.name }}</a></td>
             <td>{{ expense.user }}</td>
           </tr>
+          <div id="modal{{ forloop.counter }}" class="modal expense-modal">
+            <div class="modal-content">
+              <h4>Expense Details</h4>
+              <p>Name: {{ expense.name }}</p>
+              <p>Date: {{ expense.date|date:"Y-m-d" }}</p>
+              <p>Amount: {{ ledger.get_currency_display|slice:"-1:" }}{{ expense.amount }}</p>
+              <p>Paid by: {{ expense.user }}</p>
+            </div>
+            <div class="modal-footer">
+              <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
+          </div>
         {% endfor %}
       {% else %}
         <tr>
@@ -78,6 +90,8 @@
   });
   const modalEl = document.getElementById('form-modal');
   M.Modal.init(modalEl);
+  const modalEls = document.querySelectorAll('.expense-modal');
+  M.Modal.init(modalEls);
 </script>
 
 {% endblock %}

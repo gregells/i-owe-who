@@ -67,11 +67,10 @@ textarea:focus:not([readonly]) {
 }
 
 .modal {
-  background-color: rgba(0, 0, 0, 0);
+  background-color: #424242;
 }
 
 .modal.bottom-sheet {
-  background-color: #424242;
   max-height: 80%;
 }
 
