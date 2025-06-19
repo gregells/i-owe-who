@@ -79,6 +79,14 @@ textarea:focus:not([readonly]) {
   max-height: 80%;
 }
 
+div.modal-content > h5 {
+  margin-top: -5px;
+}
+
+div.modal-content > h5 > i {
+  margin-right: -10px;
+}
+
 .datepicker-date-display {
   background-color: #b71c1c;
 }
