@@ -6,7 +6,7 @@
 <div class="card grey darken-3">
   <div class="card-content">
     <span class="card-title">{{ expense.name }}</span>
-    <p>Date: {{ expense.date|date:"Y-m-d-D" }}</p>
+    <p>Date: {{ expense.date|date:"Y-m-d D" }}</p>
     <p>Amount: {{ expense.ledger.get_currency_display|slice:"-1:" }}{{ expense.amount }}</p>
     <p>Paid by: {{ expense.user }}</p>
     <p class="grey-text">Created at: {{ expense.created_at|date:"Y-m-d g:i a" }}</p>
