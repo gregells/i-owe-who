@@ -3,6 +3,14 @@
 
 <h3>Ledger Details</h3>
 
+<a 
+  href="{% url 'ledgers_index' %}"
+  class="red-text nav-link"
+>
+  <i class="material-icons tiny">keyboard_backspace</i>
+  Return to list of ledgers
+</a>
+
 <div class="card grey darken-3">
   <div class="card-content">
     <span class="card-title">{{ ledger.name }}</span>
