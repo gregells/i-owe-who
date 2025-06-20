@@ -92,6 +92,9 @@ def add_expense(request, ledger_id):
         new_expense.user_id = request.user.id
         # Now save the new expense to the database:
         new_expense.save()
+        # Trigger a save on the ledger to update its updated_at field:
+        ledger = Ledger.objects.get(id=ledger_id)
+        ledger.save()
     return redirect('ledgers_detail', ledger_id=ledger_id)
 
 
