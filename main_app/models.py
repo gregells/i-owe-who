@@ -36,6 +36,23 @@ class Ledger(models.Model):
     def get_total_spent(self):
         return self.expense_set.aggregate(models.Sum('amount', default=0))['amount__sum']
     
+    def get_individual_spent(self):
+        # Initialize the list of individual amounts spent:
+        individual_spent = []
+        # Start by adding the creator's total spent:
+        individual_spent.append({
+            'name': self.creator.username,
+            'total': self.expense_set.filter(user=self.creator).aggregate(models.Sum('amount', default=0))['amount__sum']
+        })
+        # Loop through each member of the ledger and append their total spent:
+        for member in self.members.all():
+            individual_spent.append({
+                'name': member.username,
+                'total': self.expense_set.filter(user=member).aggregate(models.Sum('amount', default=0))['amount__sum']
+            })
+
+        return individual_spent
+
 
 class Expense(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)

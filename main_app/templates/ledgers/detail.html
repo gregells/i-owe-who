@@ -43,6 +43,12 @@
       </tr>
     </thead>
     <tbody>
+      {% for member in ledger.get_individual_spent %}
+        <tr>
+          <td>{{ member.name }}</td>
+          <td>{{ ledger.get_currency_display|slice:"-1:" }}{{ member.total }}</td>
+        </tr>
+      {% endfor %}
       <tr>
         <td>All members</td>
         <td>{{ ledger.get_currency_display|slice:"-1:" }}{{ ledger.get_total_spent }}</td>
