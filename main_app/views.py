@@ -110,3 +110,8 @@ def expenses_detail(request, expense_id):
 class ExpenseUpdate(UpdateView):
     model = Expense
     fields = ['name', 'amount', 'date']
+
+
+class ExpenseDelete(DeleteView):
+    model = Expense
+    success_url = '/ledgers'
