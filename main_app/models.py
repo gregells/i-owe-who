@@ -33,6 +33,10 @@ class Ledger(models.Model):
     def get_absolute_url(self):
         return reverse('ledgers_detail', kwargs={'ledger_id': self.id})
     
+    def get_total_spent(self):
+        # return self.expense_set.aggregate(total=models.Sum('amount'))['total'] or 0
+        return self.expense_set.aggregate(models.Sum('amount', default=0))['amount__sum']
+    
 
 class Expense(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)

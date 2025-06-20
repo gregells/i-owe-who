@@ -34,6 +34,24 @@
 </div>
 
 <div class="row">
+  <h5>Totals:</h5>
+  <table class="striped">
+    <thead>
+      <tr>
+        <th>Member</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>All members</td>
+        <td>{{ ledger.get_currency_display|slice:"-1:" }}{{ ledger.get_total_spent }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="row">
   <button data-target="form-modal" class="btn red darken-4 waves-effect waves-light modal-trigger col s12">
     Add a new expense
   </button>
