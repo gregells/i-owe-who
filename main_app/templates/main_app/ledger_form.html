@@ -13,6 +13,7 @@
   
   {% if object %}
     <button type="submit" class="btn red darken-4">Save Changes</button>
+    <a class="btn" href="{% url 'ledgers_detail' object.id %}">Discard Changes</a>
     {% else %}
     <button type="submit" class="btn red darken-4">Add Ledger</button>
   {% endif %}
