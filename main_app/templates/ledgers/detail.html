@@ -10,6 +10,7 @@
     <p>Currency: {{ ledger.get_currency_display }}</p>
     <p>Created at: {{ ledger.created_at }}</p>
     <p>Created by: {{ ledger.creator }}</p>
+    <p>Last updated: {{ ledger.updated_at }}</p>
     <p>Members:
       {% if ledger.members.count > 0 %}
         {{ ledger.members.all|join:', ' }}
