@@ -34,17 +34,18 @@ class Ledger(models.Model):
     
 
 class Expense(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
     name = models.CharField(max_length=100)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     date = models.DateField()
     ledger = models.ForeignKey(Ledger, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    
+    class Meta:
+        ordering = ['-date', '-created_at']
 
     def __str__(self):
         return f"{self.name} - {self.amount} {self.ledger.currency}"
-    
-    class Meta:
-        ordering = ['-date']
     
     def get_absolute_url(self):
         return reverse('expenses_detail', kwargs={'expense_id': self.id})
