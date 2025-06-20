@@ -122,3 +122,16 @@ ul.dropdown-content.select-dropdown {
 ul.dropdown-content.select-dropdown > li > span {
   color: white;
 }
+
+a.nav-link {
+  font-size: 20px;
+}
+
+a.nav-link > i {
+  font-size: 24px;
+  vertical-align: text-top;
+}
+
+a.nav-link:hover {
+  text-decoration: underline;
+}

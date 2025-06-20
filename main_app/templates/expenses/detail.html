@@ -3,6 +3,14 @@
 
 <h3>Expense Details</h3>
 
+<a 
+  href="{% url 'ledgers_detail' expense.ledger.id %}"
+  class="red-text nav-link"
+>
+  <i class="material-icons tiny">keyboard_backspace</i>
+  Return to ledger
+</a>
+
 <div class="card grey darken-3">
   <div class="card-content">
     <span class="card-title">{{ expense.name }}</span>
