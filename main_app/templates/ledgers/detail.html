@@ -16,8 +16,8 @@
         No members yet.
       {% endif %}
     </p>
-    <p>Created at: {{ ledger.created_at|date:"Y-m-d g:i a" }}</p>
-    <p>Last updated: {{ ledger.updated_at|date:"Y-m-d g:i a" }}</p>
+    <p class="grey-text">Created at: {{ ledger.created_at|date:"Y-m-d g:i a" }}</p>
+    <p class="grey-text">Last updated: {{ ledger.updated_at|date:"Y-m-d g:i a" }}</p>
   </div>
   <div class="card-action">
     <a href="{% url 'ledgers_update' ledger.id %}">Edit</a>
@@ -66,8 +66,8 @@
               <p>Date: {{ expense.date|date:"Y-m-d" }}</p>
               <p>Amount: {{ ledger.get_currency_display|slice:"-1:" }}{{ expense.amount }}</p>
               <p>Paid by: {{ expense.user }}</p>
-              <p>Created at: {{ expense.created_at|date:"Y-m-d g:i a" }}</p>
-              <p>Updated at: {{ expense.updated_at|date:"Y-m-d g:i a" }}</p>
+              <p class="grey-text">Created at: {{ expense.created_at|date:"Y-m-d g:i a" }}</p>
+              <p class="grey-text">Updated at: {{ expense.updated_at|date:"Y-m-d g:i a" }}</p>
             </div>
             <div class="modal-footer">
               <a
