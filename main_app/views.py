@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Ledger, Expense
@@ -34,6 +36,7 @@ def signup(request):
     return render(request, 'registration/signup.html', context)
 
 
+@login_required
 def ledgers_index(request):
     # Get all ledgers where the current user is either the creator or a member:
     ledgers = Ledger.objects.filter(Q(creator=request.user) | Q(members=request.user))
@@ -42,6 +45,7 @@ def ledgers_index(request):
     })
 
 
+@login_required
 def ledgers_detail(request, ledger_id):
     ledger = Ledger.objects.get(id=ledger_id)
     # Redirect back to index page if user is not the creator or a member of this ledger:
@@ -56,7 +60,7 @@ def ledgers_detail(request, ledger_id):
     })
 
 
-class LedgerCreate(CreateView):
+class LedgerCreate(LoginRequiredMixin, CreateView):
     model = Ledger
     fields = ['name', 'description', 'currency']
 
@@ -68,16 +72,17 @@ class LedgerCreate(CreateView):
         return super().form_valid(form)
     
 
-class LedgerUpdate(UpdateView):
+class LedgerUpdate(LoginRequiredMixin, UpdateView):
     model = Ledger
     fields = ['name', 'description', 'currency']
 
 
-class LedgerDelete(DeleteView):
+class LedgerDelete(LoginRequiredMixin, DeleteView):
     model = Ledger
     success_url = '/ledgers'
 
 
+@login_required
 def add_expense(request, ledger_id):
     # Create an ExpenseForm instance using the data from the request:
     expense_form = ExpenseForm(request.POST)
@@ -98,6 +103,7 @@ def add_expense(request, ledger_id):
     return redirect('ledgers_detail', ledger_id=ledger_id)
 
 
+@login_required
 def expenses_detail(request, expense_id):
     expense = Expense.objects.get(id=expense_id)
     # Redirect back to index page if user is not the creator or a member of the ledger
@@ -110,11 +116,11 @@ def expenses_detail(request, expense_id):
     })
 
 
-class ExpenseUpdate(UpdateView):
+class ExpenseUpdate(LoginRequiredMixin, UpdateView):
     model = Expense
     fields = ['name', 'amount', 'date']
 
 
-class ExpenseDelete(DeleteView):
+class ExpenseDelete(LoginRequiredMixin, DeleteView):
     model = Expense
     success_url = '/ledgers'
