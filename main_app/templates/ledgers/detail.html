@@ -66,6 +66,8 @@
               <p>Date: {{ expense.date|date:"Y-m-d" }}</p>
               <p>Amount: {{ ledger.get_currency_display|slice:"-1:" }}{{ expense.amount }}</p>
               <p>Paid by: {{ expense.user }}</p>
+              <p>Created at: {{ expense.created_at|date:"Y-m-d g:i a" }}</p>
+              <p>Updated at: {{ expense.updated_at|date:"Y-m-d g:i a" }}</p>
             </div>
             <div class="modal-footer">
               <a
