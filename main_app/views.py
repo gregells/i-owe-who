@@ -3,7 +3,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.db.models import Q
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Ledger
+from .models import Ledger, Expense
 from .forms import ExpenseForm
 
 # Create your views here.
@@ -92,4 +92,16 @@ def add_expense(request, ledger_id):
         new_expense.user_id = request.user.id
         # Now save the new expense to the database:
         new_expense.save()
-    return redirect('ledgers_detail', ledger_id=ledger_id)        
+    return redirect('ledgers_detail', ledger_id=ledger_id)
+
+
+def expenses_detail(request, expense_id):
+    expense = Expense.objects.get(id=expense_id)
+    # Redirect back to index page if user is not the creator or a member of the ledger
+    #   that the expense belongs to:
+    if request.user != expense.ledger.creator and request.user not in expense.ledger.members.all():
+        return redirect('ledgers_index')
+    
+    return render(request, 'expenses/detail.html', {
+        'expense': expense
+    })

@@ -66,9 +66,14 @@
               <p>Amount: {{ ledger.get_currency_display|slice:"-1:" }}{{ expense.amount }}</p>
               <p>Paid by: {{ expense.user }}</p>
             </div>
-            <!-- <div class="modal-footer">
-              <a href="#!" class="modal-close waves-effect waves-green btn">Close</a>
-            </div> -->
+            <div class="modal-footer">
+              <a
+                href="{% url 'expenses_detail' expense.id %}"
+                target="_blank" rel="noopener noreferrer"
+                class="btn red darken-4 waves-effect waves-light col s12">
+                Open in new tab
+              </a>
+            </div>
           </div>
         {% endfor %}
       {% else %}

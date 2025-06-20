@@ -11,4 +11,5 @@ urlpatterns = [
     path('ledgers/<int:pk>/update/', views.LedgerUpdate.as_view(), name='ledgers_update'),
     path('ledgers/<int:pk>/delete/', views.LedgerDelete.as_view(), name='ledgers_delete'),
     path('ledgers/<int:ledger_id>/add_expense/', views.add_expense, name='add_expense'),
+    path('expenses/<int:expense_id>/', views.expenses_detail, name='expenses_detail'),
 ]

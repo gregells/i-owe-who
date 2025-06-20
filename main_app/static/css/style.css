@@ -73,6 +73,7 @@ textarea:focus:not([readonly]) {
 .modal .modal-footer {
   background-color: #424242;
   border-top: 1px solid rgba(160, 160, 160, 0.2);
+  padding: 4px 10px;
 }
 
 .modal.bottom-sheet {
