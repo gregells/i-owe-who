@@ -105,3 +105,8 @@ def expenses_detail(request, expense_id):
     return render(request, 'expenses/detail.html', {
         'expense': expense
     })
+
+
+class ExpenseUpdate(UpdateView):
+    model = Expense
+    fields = ['name', 'amount', 'date']

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Edit Expense</h1>
+
+<form action="" method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  
+  <button type="submit" class="btn red darken-4">Save Changes</button>
+</form>
+
+<script>
+  // Initialise the date element:
+  const dateEl = document.getElementById('id_date');
+  M.Datepicker.init(dateEl, {
+    format: 'yyyy-mm-dd',
+    defaultDate: new Date(),
+    setDefaultDate: true,
+    autoClose: true
+  });
+</script>
+{% endblock %}

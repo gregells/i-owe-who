@@ -11,6 +11,7 @@
     <p>Paid by: {{ expense.user }}</p>
   </div>
   <div class="card-action">
+    <a href="{% url 'expenses_update' expense.id %}">Edit</a>
   </div>
 </div>
 
