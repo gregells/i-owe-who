@@ -39,19 +39,19 @@
     <thead>
       <tr>
         <th>Member</th>
-        <th class="right">Total</th>
+        <th class="right-align">Total</th>
       </tr>
     </thead>
     <tbody>
       {% for member in ledger.get_individual_spent %}
         <tr>
           <td>{{ member.name }}</td>
-          <td class="right">{{ ledger.get_currency_display|slice:"-1:" }}{{ member.total }}</td>
+          <td class="right-align">{{ ledger.get_currency_display|slice:"-1:" }}{{ member.total }}</td>
         </tr>
       {% endfor %}
       <tr class="last-row">
         <td>All members</td>
-        <td class="right">
+        <td class="right-align">
             {{ ledger.get_currency_display|slice:"-1:" }}{{ ledger.get_total_spent }}
         </td>
       </tr>
