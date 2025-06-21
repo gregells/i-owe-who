@@ -35,7 +35,7 @@
 
 <div class="row">
   <h5>Totals:</h5>
-  <table class="striped">
+  <table>
     <thead>
       <tr>
         <th>Member</th>
@@ -49,9 +49,11 @@
           <td class="right">{{ ledger.get_currency_display|slice:"-1:" }}{{ member.total }}</td>
         </tr>
       {% endfor %}
-      <tr>
+      <tr class="last-row">
         <td>All members</td>
-        <td class="right">{{ ledger.get_currency_display|slice:"-1:" }}{{ ledger.get_total_spent }}</td>
+        <td class="right">
+            {{ ledger.get_currency_display|slice:"-1:" }}{{ ledger.get_total_spent }}
+        </td>
       </tr>
     </tbody>
   </table>

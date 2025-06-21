@@ -135,3 +135,7 @@ a.nav-link > i {
 a.nav-link:hover {
   text-decoration: underline;
 }
+
+.last-row {
+  font-weight: 900;
+}
