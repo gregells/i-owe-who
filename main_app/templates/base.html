@@ -13,31 +13,44 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body class="grey darken-4 white-text">
-  <header class="navbar-fixed">
-    <nav>
-      <div class="nav-wrapper red darken-4">
-        <ul>
-          <li><a href="{% url 'home' %}" class="left brand-logo">&nbsp;&nbsp;I Owe Who?</a></li>
-        </ul>
-        <ul class="right">
-          <li><a href="{% url 'about' %}">About</a></li>
-          {% if user.is_authenticated %}
-            <li><a href="{% url 'ledgers_index' %}">My Ledgers</a></li>
-            <li><a href="{% url 'ledgers_create' %}">Add Ledger</a></li>
-            <li>
-              <form method="POST" action="{% url 'logout' %}">
-                {% csrf_token %}
-                <button type="submit" id="logout-btn">Log Out</button>
-              </form>
-            </li>
-          {% else %}
-            <li><a href="{% url 'login' %}">Log In</a></li>
-            <li><a href="{% url 'signup' %}">Sign Up</a></li>
-          {% endif %}
-        </ul>
-      </div>
-    </nav>
-  </header>
+  <nav class="navbar-fixed">
+    <div class="nav-wrapper red darken-4">
+      <a href="{% url 'home' %}" class="brand-logo">&nbsp;&nbsp;I Owe Who?</a>
+      <a href="#" data-target="mobile-sidenav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="{% url 'about' %}">About</a></li>
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'ledgers_index' %}">My Ledgers</a></li>
+          <li><a href="{% url 'ledgers_create' %}">Add Ledger</a></li>
+          <li>
+            <form method="POST" action="{% url 'logout' %}">
+              {% csrf_token %}
+              <button type="submit" class="logout-btn">Log Out</button>
+            </form>
+          </li>
+        {% else %}
+          <li><a href="{% url 'login' %}">Log In</a></li>
+          <li><a href="{% url 'signup' %}">Sign Up</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
+  <ul class="sidenav" id="mobile-sidenav">
+    <li><a href="{% url 'about' %}">About</a></li>
+    {% if user.is_authenticated %}
+      <li><a href="{% url 'ledgers_index' %}">My Ledgers</a></li>
+      <li><a href="{% url 'ledgers_create' %}">Add Ledger</a></li>
+      <li>
+        <form method="POST" action="{% url 'logout' %}">
+          {% csrf_token %}
+          <button type="submit" class="logout-btn">Log Out</button>
+        </form>
+      </li>
+    {% else %}
+      <li><a href="{% url 'login' %}">Log In</a></li>
+      <li><a href="{% url 'signup' %}">Sign Up</a></li>
+    {% endif %}
+  </ul>
   <main class="container">
     {% block content %}
     {% endblock %}
@@ -54,4 +67,10 @@
     <div class="right">All Rights Reserved, &copy; 2025 I Owe Who? &nbsp;</div>
   </footer>
 </body>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const sidenavEl = document.querySelectorAll('.sidenav');
+    M.Sidenav.init(sidenavEl);
+  });
+</script>
 </html>

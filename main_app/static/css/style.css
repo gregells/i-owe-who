@@ -13,17 +13,38 @@ footer.page-footer {
   text-align: right;
 }
 
-#logout-btn {
-  height: 64px;
+.logout-btn {
   background: none;
   border: none;
   cursor: pointer;
   color: inherit;
+}
+
+ul.hide-on-med-and-down > li > form > button.logout-btn {
+  height: 64px;
   padding: 0 15px;
 }
 
-#logout-btn:hover {
+ul.sidenav > li > form > button.logout-btn {
+  height: 48px;
+  width: 100%;
+  padding: 0 32px;
+  text-align: left;
+}
+
+.logout-btn:hover,
+.sidenav li > a:hover,
+ul.hide-on-med-and-down > li > form > button.logout-btn:focus,
+ul.sidenav > li > form > button.logout-btn:focus {
   background-color: rgba(0, 0, 0, 0.1);
+}
+
+.sidenav {
+  background-color: #424242;
+}
+
+.sidenav li > a {
+  color: white;
 }
 
 input:not([type]),
