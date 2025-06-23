@@ -62,7 +62,7 @@ def ledgers_detail(request, ledger_id):
 
 class LedgerCreate(LoginRequiredMixin, CreateView):
     model = Ledger
-    fields = ['name', 'description', 'currency']
+    fields = ['name', 'description', 'currency', 'members']
 
     # Override the inherited method called when a valid form is submitted:
     def form_valid(self, form):

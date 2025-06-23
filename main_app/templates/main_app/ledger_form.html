@@ -20,8 +20,10 @@
 </form>
 
 <script>
-  // Initialise the select element:
-  const selectEl = document.getElementById('id_currency');
-  M.FormSelect.init(selectEl);
+  // Initialise the select elements for currency and members:
+  const currencyEl = document.getElementById('id_currency');
+  M.FormSelect.init(currencyEl);
+  const membersEl = document.getElementById('id_members');
+  M.FormSelect.init(membersEl);
 </script>
 {% endblock %}
