@@ -74,7 +74,7 @@ class LedgerCreate(LoginRequiredMixin, CreateView):
 
 class LedgerUpdate(LoginRequiredMixin, UpdateView):
     model = Ledger
-    fields = ['name', 'description', 'currency']
+    fields = ['name', 'description', 'currency', 'members']
 
 
 class LedgerDelete(LoginRequiredMixin, DeleteView):
