@@ -25,7 +25,7 @@ class Ledger(models.Model):
         default=CURRENCIES[0][0]
     )
     creator = models.ForeignKey(User, on_delete=models.CASCADE, related_name='ledgers_created')
-    members = models.ManyToManyField(User, related_name='ledgers_joined')
+    members = models.ManyToManyField(User, blank=True, related_name='ledgers_joined')
 
     def __str__(self):
         return self.name
