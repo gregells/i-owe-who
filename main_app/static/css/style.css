@@ -164,3 +164,16 @@ a.nav-link:hover {
 tr {
   border-bottom: 1px solid #424242;
 }
+
+footer.page-footer {
+  width: 100%;
+  margin-bottom: 0;
+  display: flex;
+  justify-content: center;
+}
+
+@media (width >= 600px) {
+  footer.page-footer {
+    justify-content: space-between;
+  }
+}
