@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h3>My Profile</h3>
+
+<div class="card grey darken-3">
+  <div class="card-content">
+    <span class="card-title">Username: {{ user.username }}</span>
+    <p>Ledgers created: {{ user.ledgers_created.count }}</p>
+    <p>Ledgers joined: {{ user.ledgers_joined.count }}</p>
+    <p>Expenses added: {{ user.expense_set.count }}</p>
+    <p class="grey-text">Date joined: {{ user.date_joined|date:"Y-m-d" }}</p>
+  </div>
+</div>
+
+{% endblock %}

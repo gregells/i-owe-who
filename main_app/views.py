@@ -37,6 +37,11 @@ def signup(request):
 
 
 @login_required
+def my_profile(request):
+    return render(request, 'profiles/detail.html')
+
+
+@login_required
 def ledgers_index(request):
     # Get all ledgers where the current user is either the creator or a member:
     ledgers = Ledger.objects.filter(Q(creator=request.user) | Q(members=request.user))
