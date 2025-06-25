@@ -187,3 +187,17 @@ footer.page-footer {
 .two-equal-buttons > .btn {
   flex: 1;
 }
+
+.collection {
+  border: 1px solid rgb(85, 85, 85);
+}
+
+.collection.with-header .collection-header {
+  background-color: #424242;
+  border-bottom: 1px solid rgb(85, 85, 85);
+}
+
+.collection .collection-item {
+  background-color: #424242;
+  border-bottom: 1px solid rgb(85, 85, 85);
+}
