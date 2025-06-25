@@ -16,13 +16,11 @@
 
 <ul class="collection with-header">
   <li class="collection-header"><h4>Friends</h4></li>
-  {% if user.friends.count > 0 %}
-    {% for friend in user.friends.all %}
-      <li class="collection-item">{{ friend.user.username }}</li>
-    {% endfor %}
-  {% else %}
+  {% for friend in user.friends.all %}
+    <li class="collection-item">{{ friend.user.username }}</li>
+  {% empty %}
     <li class="collection-item">No friends added yet.</li>
-  {% endif %}
+  {% endfor %}
 </ul>
 
 {% endblock %}
