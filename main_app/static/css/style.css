@@ -177,3 +177,13 @@ footer.page-footer {
     justify-content: space-between;
   }
 }
+
+.two-equal-buttons {
+  display: flex;
+  justify-content: stretch;
+  gap: 4px;
+}
+
+.two-equal-buttons > .btn {
+  flex: 1;
+}
