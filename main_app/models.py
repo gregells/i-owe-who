@@ -14,6 +14,15 @@ CURRENCIES = (
 )
 
 # Create your models here.
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    friends = models.ManyToManyField(User, blank=True, related_name='friends')
+    invites_sent = models.ManyToManyField(User, blank=True, related_name='invites_rec')
+
+    def __str__(self):
+        return f"{self.user.username}'s Profile"
+
+
 class Ledger(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
