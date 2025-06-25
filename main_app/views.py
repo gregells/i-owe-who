@@ -6,7 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Ledger, Expense
-from .forms import ExpenseForm
+from .forms import LedgerForm, ExpenseForm
 
 # Create your views here.
 def home(request):
@@ -62,7 +62,7 @@ def ledgers_detail(request, ledger_id):
 
 class LedgerCreate(LoginRequiredMixin, CreateView):
     model = Ledger
-    fields = ['name', 'description', 'currency', 'members']
+    form_class = LedgerForm
 
     # Override the inherited method called when a valid form is submitted:
     def form_valid(self, form):
@@ -71,10 +71,20 @@ class LedgerCreate(LoginRequiredMixin, CreateView):
         # Pass control back to the superclass CreateView's form_valid() method to do its job:
         return super().form_valid(form)
     
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
+
 
 class LedgerUpdate(LoginRequiredMixin, UpdateView):
     model = Ledger
-    fields = ['name', 'description', 'currency', 'members']
+    form_class = LedgerForm
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
 
 
 class LedgerDelete(LoginRequiredMixin, DeleteView):
