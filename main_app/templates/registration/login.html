@@ -7,8 +7,8 @@
   {% csrf_token %}
   {{ form.as_p }}
   <input type="hidden" name="next" value="{{ next }}">
-  <div class="section">
-    <button type="submit" class="btn red darken-4 waves-effect waves-light">Log In</button>
+  <div class="section row">
+    <button type="submit" class="btn col s12 red darken-4 waves-effect waves-light">Log In</button>
   </div>
 </form>
 

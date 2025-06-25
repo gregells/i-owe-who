@@ -8,8 +8,8 @@
 <form method="POST" action="{% url 'signup' %}">
   {% csrf_token %}
   {{ form.as_p }}
-  <div class="section">
-    <button type="submit" class="btn red darken-4 waves-effect waves-light">Sign Up</button>
+  <div class="section row">
+    <button type="submit" class="btn col s12 red darken-4 waves-effect waves-light">Sign Up</button>
   </div>
 </form>
 
