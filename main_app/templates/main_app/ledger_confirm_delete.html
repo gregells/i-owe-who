@@ -7,8 +7,10 @@
 
 <form action="" method="POST">
   {% csrf_token %}
-  <button type="submit" class="btn red darken-4">Yes - Delete!</button>
-  <a class="btn" href="{% url 'ledgers_detail' ledger.id %}">Cancel</a>
+  <div class="section">
+    <button type="submit" class="btn red darken-4">Yes - Delete!</button>
+    <a class="btn" href="{% url 'ledgers_detail' ledger.id %}">Cancel</a>
+  </div>
 </form>
 
 {% endblock %}

@@ -7,8 +7,10 @@
   {% csrf_token %}
   {{ form.as_p }}
   
-  <button type="submit" class="btn red darken-4">Save Changes</button>
-  <a class="btn" href="{% url 'expenses_detail' expense.id %}">Discard Changes</a>
+  <div class="section">
+    <button type="submit" class="btn red darken-4">Save Changes</button>
+    <a class="btn" href="{% url 'expenses_detail' expense.id %}">Discard Changes</a>
+  </div>
 </form>
 
 <script>
