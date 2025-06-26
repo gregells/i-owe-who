@@ -52,6 +52,12 @@
   </form>
 </div>
 
+{% if toast_message %}
+  <script>
+    M.toast({html: '{{ toast_message }}'});
+  </script>
+{% endif %}
+
 <ul class="collection with-header">
   <li class="collection-header"><h4>Friends</h4></li>
   {% for friend in user.friends.all %}
@@ -60,5 +66,10 @@
     <li class="collection-item">No friends added yet.</li>
   {% endfor %}
 </ul>
+
+<script>
+  const modalEl = document.getElementById('form-modal');
+  M.Modal.init(modalEl);
+</script>
 
 {% endblock %}
