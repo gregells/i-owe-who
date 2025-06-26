@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
+from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -41,6 +42,21 @@ def signup(request):
 @login_required
 def my_profile(request):
     return render(request, 'profiles/my_profile.html')
+
+
+@login_required
+def send_friend_request(request):
+    receiver = User.objects.get(username=request.POST.get('username'))
+
+    if receiver:
+        # Prevent users sending friend requests to themselves:
+        if request.user != receiver:
+            # Add the receiver to the sender's invites_sent list:
+            request.user.profile.invites_sent.add(receiver)
+            return redirect('my_profile')
+        else:
+            # Handle case where user sends a friend request to themselves:
+            return redirect('my_profile')
 
 
 @login_required

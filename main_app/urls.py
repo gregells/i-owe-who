@@ -6,6 +6,7 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('accounts/signup/', views.signup, name='signup'),
     path('accounts/my_profile/', views.my_profile, name='my_profile'),
+    path('accounts/send_friend_request/', views.send_friend_request, name='send_friend_request'),
     path('ledgers/', views.ledgers_index, name='ledgers_index'),
     path('ledgers/<int:ledger_id>/', views.ledgers_detail, name='ledgers_detail'),
     path('ledgers/create/', views.LedgerCreate.as_view(), name='ledgers_create'),

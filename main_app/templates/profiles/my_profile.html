@@ -31,6 +31,27 @@
   {% endfor %}
 </ul>
 
+<div class="row">
+  <button
+    data-target="form-modal"
+    class="btn red darken-4 waves-effect waves-light modal-trigger col s12"
+  >
+    Add a friend
+  </button>
+</div>
+
+<div id="form-modal" class="modal bottom-sheet">
+  <form action="{% url 'send_friend_request' %}" method="POST" class="modal-content row">
+    <h5>Enter a username:</h5>
+    {% csrf_token %}
+    <div class="input-field col s12">
+      <input type="text" name="username" id="username" required>
+      <label for="username">Username</label>
+    </div>
+    <button type="submit" class="btn red darken-4 waves-effect waves-light col s12">Send request</button>
+  </form>
+</div>
+
 <ul class="collection with-header">
   <li class="collection-header"><h4>Friends</h4></li>
   {% for friend in user.friends.all %}
