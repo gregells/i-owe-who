@@ -46,7 +46,8 @@ def my_profile(request):
 
 @login_required
 def send_friend_request(request):
-    receiver = User.objects.filter(username=request.POST.get('username')).first()
+    receiver_username = request.POST.get('username')
+    receiver = User.objects.filter(username=receiver_username).first()
 
     if receiver:
         # Prevent users sending friend requests to themselves:
@@ -54,7 +55,7 @@ def send_friend_request(request):
             # Add the receiver to the sender's invites_sent list:
             request.user.profile.invites_sent.add(receiver)
             return render(request, 'profiles/my_profile.html', {
-                'toast_message': 'Friend request sent to ' + receiver.username + '.'
+                'toast_message': 'Friend request sent to ' + receiver_username + '.'
             })
         else:
             # Handle case where user sends a friend request to themselves:
@@ -64,7 +65,7 @@ def send_friend_request(request):
     else:
         # Handle case where the receiver does not exist:
         return render(request, 'profiles/my_profile.html', {
-            'toast_message': 'Could not find user <em>' + request.POST.get('username') + '</em>.'
+            'toast_message': 'Could not find user ' + receiver_username + '.'
         })
 
 
