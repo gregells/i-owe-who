@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Ledger, Expense
+from .models import Profile, Ledger, Expense
 from .forms import LedgerForm, ExpenseForm
 
 # Create your views here.
@@ -27,6 +27,8 @@ def signup(request):
             user = form.save()
             # Log the user in to save them from having to login after signup:
             login(request, user)
+            # Create a profile for the new user:
+            Profile.objects.create(user=user)
             return redirect('home')
         else:
             error_message = 'Invalid sign up - try again'
