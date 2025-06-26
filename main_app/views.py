@@ -46,7 +46,7 @@ def my_profile(request):
 
 @login_required
 def send_friend_request(request):
-    receiver = User.objects.get(username=request.POST.get('username'))
+    receiver = User.objects.filter(username=request.POST.get('username')).first()
 
     if receiver:
         # Prevent users sending friend requests to themselves:
@@ -57,6 +57,9 @@ def send_friend_request(request):
         else:
             # Handle case where user sends a friend request to themselves:
             return redirect('my_profile')
+    else:
+        # Handle case where the receiver does not exist:
+        return redirect('my_profile')
 
 
 @login_required
