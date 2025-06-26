@@ -50,21 +50,39 @@ def send_friend_request(request):
     receiver = User.objects.filter(username=receiver_username).first()
 
     if receiver:
-        # Prevent users sending friend requests to themselves:
-        if request.user != receiver:
+        # Case 1: user sends a request to themselves:
+        if request.user == receiver:
+            return render(request, 'profiles/my_profile.html', {
+                'result': 'self_request',
+            })
+        # Case 2: receiver is already a friend:
+        elif receiver in request.user.profile.friends.all():
+            return render(request, 'profiles/my_profile.html', {
+                'result': 'already_friends',
+                'receiver_username': receiver_username,
+            })
+        # Case 3: request already sent to receiver:
+        elif receiver in request.user.profile.invites_sent.all():
+            return render(request, 'profiles/my_profile.html', {
+                'result': 'already_sent',
+                'receiver_username': receiver_username,
+            })
+        # Case 4: request already received from receiver:
+        elif request.user in receiver.profile.invites_sent.all():
+            return render(request, 'profiles/my_profile.html', {
+                'result': 'already_received',
+                'receiver_username': receiver_username,
+            })
+        # Case 5: request is valid and can be sent:
+        else:
             # Add the receiver to the sender's invites_sent list:
             request.user.profile.invites_sent.add(receiver)
             return render(request, 'profiles/my_profile.html', {
                 'result': 'success',
                 'receiver_username': receiver_username,
             })
-        else:
-            # Handle case where user sends a friend request to themselves:
-            return render(request, 'profiles/my_profile.html', {
-                'result': 'self_request',
-            })
     else:
-        # Handle case where the receiver does not exist:
+        # Case 6: the receiver does not exist:
         return render(request, 'profiles/my_profile.html', {
             'result': 'not_found',
             'receiver_username': receiver_username,
