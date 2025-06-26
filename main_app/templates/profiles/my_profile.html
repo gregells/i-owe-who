@@ -52,9 +52,22 @@
   </form>
 </div>
 
-{% if toast_message %}
+{% if result %}
+  {% if result == 'success' %}
+    <script>
+      var toastHTML = '<span>Friend request sent to&puncsp;<span class="red-text">{{ receiver_username }}</span>.</span>';
+    </script>
+  {% elif result == 'self_request' %}
+    <script>
+      var toastHTML = '<span>Cannot send a friend request to yourself</span>';
+    </script>
+  {% elif result == 'not_found' %}
+    <script>
+      var toastHTML = '<span>Could not find user&puncsp;<span class="red-text">{{ receiver_username }}</span>.</span>';
+    </script>
+  {% endif %}
   <script>
-    M.toast({html: '{{ toast_message }}'});
+    M.toast({html: toastHTML});
   </script>
 {% endif %}
 

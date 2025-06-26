@@ -55,17 +55,19 @@ def send_friend_request(request):
             # Add the receiver to the sender's invites_sent list:
             request.user.profile.invites_sent.add(receiver)
             return render(request, 'profiles/my_profile.html', {
-                'toast_message': 'Friend request sent to ' + receiver_username + '.'
+                'result': 'success',
+                'receiver_username': receiver_username,
             })
         else:
             # Handle case where user sends a friend request to themselves:
             return render(request, 'profiles/my_profile.html', {
-                'toast_message': 'Cannot send a friend request to yourself.'
+                'result': 'self_request',
             })
     else:
         # Handle case where the receiver does not exist:
         return render(request, 'profiles/my_profile.html', {
-            'toast_message': 'Could not find user ' + receiver_username + '.'
+            'result': 'not_found',
+            'receiver_username': receiver_username,
         })
 
 
