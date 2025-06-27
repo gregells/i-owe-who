@@ -99,7 +99,10 @@ def accept_friend_request(request, user_id):
     # Remove logged in user's user.id from new friend's invites_sent list:
     new_friend.profile.invites_sent.remove(request.user)
 
-    return redirect('my_profile')
+    return render(request, 'profiles/my_profile.html', {
+        'toast_message': 'You are now friends with',
+        'username': new_friend.username,
+    })
 
 
 @login_required
