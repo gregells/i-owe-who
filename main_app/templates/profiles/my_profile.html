@@ -15,14 +15,14 @@
 
 <div class="row">
   <button
-    data-target="form-modal"
+    data-target="send-request-modal"
     class="btn red darken-4 waves-effect waves-light modal-trigger col s12"
   >
     Add a friend
   </button>
 </div>
 
-<div id="form-modal" class="modal bottom-sheet">
+<div id="send-request-modal" class="modal bottom-sheet">
   <form action="{% url 'send_friend_request' %}" method="POST" class="modal-content row">
     <h5>Enter a username:</h5>
     {% csrf_token %}
@@ -109,7 +109,7 @@
 </ul>
 
 <script>
-  const modalEl = document.getElementById('form-modal');
+  const modalEl = document.getElementById('send-request-modal');
   M.Modal.init(modalEl);
 </script>
 
