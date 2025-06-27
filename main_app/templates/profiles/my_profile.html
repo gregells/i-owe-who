@@ -77,9 +77,10 @@
     <li class="collection-item">
       <div>
         <span>{{ request.user.username }}</span>
-        <a href="#!" class="btn-small red darken-4 waves-effect waves-light">
-          accept
-        </a>
+        <form action="{% url 'accept_friend_request' request.user.id %}" method="POST" class="">
+          {% csrf_token %}
+          <button type="submit" class="btn-small red darken-4 waves-effect waves-light">Accept</button>
+        </form>
       </div>
     </li>
   {% empty %}

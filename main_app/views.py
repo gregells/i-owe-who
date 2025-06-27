@@ -90,6 +90,19 @@ def send_friend_request(request):
 
 
 @login_required
+def accept_friend_request(request, user_id):
+    new_friend = User.objects.get(id=user_id)
+    # Add new friend's user.id to logged in user's friends list:
+    request.user.profile.friends.add(new_friend)
+    # Add logged in user's user.id to new friend's friends list:
+    new_friend.profile.friends.add(request.user)
+    # Remove logged in user's user.id from new friend's invites_sent list:
+    new_friend.profile.invites_sent.remove(request.user)
+
+    return redirect('my_profile')
+
+
+@login_required
 def ledgers_index(request):
     # Get all ledgers where the current user is either the creator or a member:
     ledgers = Ledger.objects.filter(Q(creator=request.user) | Q(members=request.user))
