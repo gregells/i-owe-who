@@ -95,12 +95,35 @@
     <li class="collection-item">
       <div>
         <span>{{ friend.username }}</span>
-        <form action="{% url 'remove_friend' friend.id %}" method="POST">
-          {% csrf_token %}
-          <button type="submit" class="btn-small red darken-4 waves-effect waves-light">Remove</button>
-        </form>
+        <button
+          data-target="modal{{ forloop.counter }}"
+          class="btn-small red darken-4 waves-effect waves-light modal-trigger"
+        >
+          Remove
+        </button>
       </div>
     </li>
+    
+    <div id="modal{{ forloop.counter }}" class="modal">
+      <form action="{% url 'remove_friend' friend.id %}" method="POST">
+        {% csrf_token %}
+        <div class="modal-content">
+          <h5>Remove Friend:<i class="small material-icons modal-close right">close</i></h5>
+          <p>
+            Are you sure you want to remove 
+            <span class="red-text">{{ friend.username }}</span> 
+            from your friends list?
+          </p>
+        </div>
+        <div class="modal-footer row">
+          <button
+            type="submit"
+            class="btn red darken-4 waves-effect waves-light col s12">
+            Yes - Remove
+          </button>
+        </div>
+      </form>
+    </div>
   {% empty %}
     <li class="collection-item">
       <div><em>No friends added yet.</em></div>
@@ -109,8 +132,8 @@
 </ul>
 
 <script>
-  const modalEl = document.getElementById('send-request-modal');
-  M.Modal.init(modalEl);
+  const modalEls = document.querySelectorAll('.modal');
+  M.Modal.init(modalEls);
 </script>
 
 {% endblock %}
