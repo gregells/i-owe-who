@@ -125,7 +125,10 @@ def remove_friend(request, user_id):
     # Remove logged in user's user.id from old_friend's friends list:
     old_friend.profile.friends.remove(request.user)
     
-    return redirect('my_profile')
+    return render(request, 'profiles/my_profile.html', {
+        'toast_message': 'You are no longer friends with',
+        'username': old_friend.username,
+    })
 
 
 @login_required
