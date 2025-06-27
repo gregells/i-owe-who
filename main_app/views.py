@@ -116,6 +116,7 @@ def cancel_friend_request(request, user_id):
         'username': invitee.username,
     })
 
+
 @login_required
 def remove_friend(request, user_id):
     old_friend = User.objects.get(id=user_id)
