@@ -222,3 +222,7 @@ li.collection-item > div {
 .collection.with-header .collection-header {
   padding: 20px;
 }
+
+.row {
+  margin-bottom: 14px;
+}
