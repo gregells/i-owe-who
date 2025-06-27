@@ -111,8 +111,10 @@ def cancel_friend_request(request, user_id):
     # Remove invitee's user.id from logged in user's invites_sent list:
     request.user.profile.invites_sent.remove(invitee)
     
-    return redirect('my_profile')
-
+    return render(request, 'profiles/my_profile.html', {
+        'toast_message': 'Retracted friend request to',
+        'username': invitee.username,
+    })
 
 @login_required
 def remove_friend(request, user_id):
