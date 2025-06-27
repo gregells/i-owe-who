@@ -112,6 +112,17 @@ def cancel_friend_request(request, user_id):
 
 
 @login_required
+def remove_friend(request, user_id):
+    old_friend = User.objects.get(id=user_id)
+    # Remove old_friend's user.id from logged in user's friends list:
+    request.user.profile.friends.remove(old_friend)
+    # Remove logged in user's user.id from old_friend's friends list:
+    old_friend.profile.friends.remove(request.user)
+    
+    return redirect('my_profile')
+
+
+@login_required
 def ledgers_index(request):
     # Get all ledgers where the current user is either the creator or a member:
     ledgers = Ledger.objects.filter(Q(creator=request.user) | Q(members=request.user))

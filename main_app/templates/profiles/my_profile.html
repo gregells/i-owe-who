@@ -107,13 +107,14 @@
 
 <ul class="collection with-header">
   <li class="collection-header"><h4>Friends</h4></li>
-  {% for friend in user.friends.all %}
+  {% for friend in user.profile.friends.all %}
     <li class="collection-item">
       <div class="">
-        <span>{{ friend.user.username }}</span>
-        <a href="#!" class="btn-small red darken-4 waves-effect waves-light">
-          remove
-        </a>
+        <span>{{ friend.username }}</span>
+        <form action="{% url 'remove_friend' friend.id %}" method="POST" class="">
+          {% csrf_token %}
+          <button type="submit" class="btn-small red darken-4 waves-effect waves-light">Remove</button>
+        </form>
       </div>
     </li>
   {% empty %}

@@ -9,6 +9,7 @@ urlpatterns = [
     path('accounts/send_friend_request/', views.send_friend_request, name='send_friend_request'),
     path('accounts/accept_friend_request/<int:user_id>/', views.accept_friend_request, name='accept_friend_request'),
     path('accounts/cancel_friend_request/<int:user_id>/', views.cancel_friend_request, name='cancel_friend_request'),
+    path('accounts/remove_friend/<int:user_id>/', views.remove_friend, name='remove_friend'),
     path('ledgers/', views.ledgers_index, name='ledgers_index'),
     path('ledgers/<int:ledger_id>/', views.ledgers_detail, name='ledgers_detail'),
     path('ledgers/create/', views.LedgerCreate.as_view(), name='ledgers_create'),
