@@ -212,3 +212,13 @@ li.collection-item > div {
 .collection .collection-item {
   padding: 0px 20px;
 }
+
+.collection.with-header .collection-header > h4 {
+  font-size: 24px;
+  line-height: 100%;
+  margin: 0;
+}
+
+.collection.with-header .collection-header {
+  padding: 20px;
+}
