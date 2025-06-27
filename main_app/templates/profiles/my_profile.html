@@ -94,9 +94,10 @@
     <li class="collection-item">
       <div>
         <span>{{ invite.username }}</span>
-        <a href="#!" class="btn-small red darken-4 waves-effect waves-light">
-          cancel
-        </a>
+        <form action="{% url 'cancel_friend_request' invite.id %}" method="POST" class="">
+          {% csrf_token %}
+          <button type="submit" class="btn-small red darken-4 waves-effect waves-light">Cancel</button>
+        </form>
       </div>
     </li>
   {% empty %}

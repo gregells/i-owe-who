@@ -103,6 +103,15 @@ def accept_friend_request(request, user_id):
 
 
 @login_required
+def cancel_friend_request(request, user_id):
+    invitee = User.objects.get(id=user_id)
+    # Remove invitee's user.id from logged in user's invites_sent list:
+    request.user.profile.invites_sent.remove(invitee)
+    
+    return redirect('my_profile')
+
+
+@login_required
 def ledgers_index(request):
     # Get all ledgers where the current user is either the creator or a member:
     ledgers = Ledger.objects.filter(Q(creator=request.user) | Q(members=request.user))
