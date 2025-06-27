@@ -34,36 +34,16 @@
   </form>
 </div>
 
-{% if result %}
-  {% if result == 'self_request' %}
-    <!-- Case 1: user sends a request to themselves: -->
+{% if toast_message %}
+  {% if username %}
+    <!-- Toast message with a username at the end: -->
     <script>
-      var toastHTML = '<span>Cannot send a friend request to yourself</span>';
+      var toastHTML = '<span>{{ toast_message }}&puncsp;<span class="red-text">{{ username }}</span>.</span>';
     </script>
-  {% elif result == 'already_friends' %}
-    <!-- Case 2: receiver is already a friend: -->
+  {% else %}
+    <!-- Toast message only, no username: -->
     <script>
-      var toastHTML = '<span>You are already friends with&puncsp;<span class="red-text">{{ receiver_username }}</span>.</span>';
-    </script>
-  {% elif result == 'already_sent' %}
-    <!-- Case 3: request already sent to receiver: -->
-    <script>
-      var toastHTML = '<span>You have already sent a friend request to&puncsp;<span class="red-text">{{ receiver_username }}</span>.</span>';
-    </script>
-  {% elif result == 'already_received' %}
-    <!-- Case 4: request already received from receiver: -->
-    <script>
-      var toastHTML = '<span>You have already received a friend request from&puncsp;<span class="red-text">{{ receiver_username }}</span>.</span>';
-    </script>
-  {% elif result == 'success' %}
-    <!-- Case 5: request is valid and can be sent: -->
-    <script>
-      var toastHTML = '<span>Friend request sent to&puncsp;<span class="red-text">{{ receiver_username }}</span>.</span>';
-    </script>
-  {% elif result == 'not_found' %}
-    <!-- Case 6: the receiver does not exist: -->
-    <script>
-      var toastHTML = '<span>Could not find user&puncsp;<span class="red-text">{{ receiver_username }}</span>.</span>';
+      var toastHTML = '<span>{{ toast_message }}</span>';
     </script>
   {% endif %}
   <script>

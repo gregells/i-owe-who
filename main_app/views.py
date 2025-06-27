@@ -53,39 +53,39 @@ def send_friend_request(request):
         # Case 1: user sends a request to themselves:
         if request.user == receiver:
             return render(request, 'profiles/my_profile.html', {
-                'result': 'self_request',
+                'toast_message': 'Cannot send a friend request to yourself.',
             })
         # Case 2: receiver is already a friend:
         elif receiver in request.user.profile.friends.all():
             return render(request, 'profiles/my_profile.html', {
-                'result': 'already_friends',
-                'receiver_username': receiver_username,
+                'toast_message': 'You are already friends with',
+                'username': receiver_username,
             })
         # Case 3: request already sent to receiver:
         elif receiver in request.user.profile.invites_sent.all():
             return render(request, 'profiles/my_profile.html', {
-                'result': 'already_sent',
-                'receiver_username': receiver_username,
+                'toast_message': 'You have already sent a friend request to',
+                'username': receiver_username,
             })
         # Case 4: request already received from receiver:
         elif request.user in receiver.profile.invites_sent.all():
             return render(request, 'profiles/my_profile.html', {
-                'result': 'already_received',
-                'receiver_username': receiver_username,
+                'toast_message': 'You have already received a friend request from',
+                'username': receiver_username,
             })
         # Case 5: request is valid and can be sent:
         else:
             # Add the receiver to the sender's invites_sent list:
             request.user.profile.invites_sent.add(receiver)
             return render(request, 'profiles/my_profile.html', {
-                'result': 'success',
-                'receiver_username': receiver_username,
+                'toast_message': 'Friend request sent to',
+                'username': receiver_username,
             })
     else:
         # Case 6: the receiver does not exist:
         return render(request, 'profiles/my_profile.html', {
-            'result': 'not_found',
-            'receiver_username': receiver_username,
+            'toast_message': 'Could not find user',
+            'username': receiver_username,
         })
 
 
