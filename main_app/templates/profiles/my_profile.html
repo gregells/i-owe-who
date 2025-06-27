@@ -58,10 +58,10 @@
   <form action="{% url 'send_friend_request' %}" method="POST" class="modal-content row">
     <h5>Enter a username:</h5>
     {% csrf_token %}
-    <div class="input-field col s12">
-      <input type="text" name="username" id="username" required>
-      <label for="username">Username</label>
-    </div>
+    <p>
+      <label for="username" class="">Username:</label>
+      <input type="text" name="username" required>
+    </p>
     <button type="submit" class="btn red darken-4 waves-effect waves-light col s12">Send request</button>
   </form>
 </div>
