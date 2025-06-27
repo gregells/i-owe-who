@@ -16,7 +16,14 @@
 <ul class="collection with-header">
   <li class="collection-header"><h4>Friend Requests Recieved</h4></li>
   {% for request in user.invites_rec.all %}
-    <li class="collection-item">{{ request.user.username }}</li>
+    <li class="collection-item">
+      <div>
+        <span>{{ request.user.username }}</span>
+        <a href="#!" class="btn-small red darken-4 waves-effect waves-light">
+          accept
+        </a>
+      </div>
+    </li>
   {% empty %}
     <li class="collection-item">No requests at this time.</li>
   {% endfor %}
@@ -25,7 +32,14 @@
 <ul class="collection with-header">
   <li class="collection-header"><h4>Friend Requests Sent</h4></li>
   {% for invite in user.profile.invites_sent.all %}
-    <li class="collection-item">{{ invite.username }}</li>
+    <li class="collection-item">
+      <div>
+        <span>{{ invite.username }}</span>
+        <a href="#!" class="btn-small red darken-4 waves-effect waves-light">
+          cancel
+        </a>
+      </div>
+    </li>
   {% empty %}
     <li class="collection-item">No pending invites.</li>
   {% endfor %}
@@ -92,7 +106,14 @@
 <ul class="collection with-header">
   <li class="collection-header"><h4>Friends</h4></li>
   {% for friend in user.friends.all %}
-    <li class="collection-item">{{ friend.user.username }}</li>
+    <li class="collection-item">
+      <div class="">
+        <span>{{ friend.user.username }}</span>
+        <a href="#!" class="btn-small red darken-4 waves-effect waves-light">
+          remove
+        </a>
+      </div>
+    </li>
   {% empty %}
     <li class="collection-item">No friends added yet.</li>
   {% endfor %}

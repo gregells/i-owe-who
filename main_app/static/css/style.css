@@ -201,3 +201,14 @@ footer.page-footer {
   background-color: #424242;
   border-bottom: 1px solid rgb(85, 85, 85);
 }
+
+li.collection-item > div {
+  height: 42px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.collection .collection-item {
+  padding: 0px 20px;
+}
