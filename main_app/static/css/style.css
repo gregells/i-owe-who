@@ -226,3 +226,7 @@ li.collection-item > div {
 .row {
   margin-bottom: 14px;
 }
+
+.card-panel {
+  background-color: #424242;
+}

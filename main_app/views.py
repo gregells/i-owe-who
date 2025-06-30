@@ -1,3 +1,6 @@
+import uuid
+import os
+import boto3
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.models import User
@@ -6,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Profile, Ledger, Expense
+from .models import Profile, Ledger, Expense, Photo
 from .forms import LedgerForm, ExpenseForm
 
 # Create your views here.
@@ -233,3 +236,26 @@ class ExpenseUpdate(LoginRequiredMixin, UpdateView):
 class ExpenseDelete(LoginRequiredMixin, DeleteView):
     model = Expense
     success_url = '/ledgers'
+
+
+@login_required
+def add_photo(request, expense_id):
+    # photo-file will be the 'name' attribute on the <input type="file"> field:
+    photo_file = request.FILES.get('photo-file', None)
+    if photo_file:
+        s3 = boto3.client('s3')
+        # Need a unique "key" for the photo in S3, with extension:
+        key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+        # Use a try-except block to handle any errors that may occur:
+        try:
+            bucket = os.environ['S3_BUCKET']
+            s3.upload_fileobj(photo_file, bucket, key)
+            # Build the URL for the uploaded photo:
+            url = f"{os.environ['S3_BASE_URL']}{bucket}/{key}"
+            # Create a new Photo object and save it to the database:
+            # Note: can use expense_id or expense object:
+            Photo.objects.create(url=url, expense_id=expense_id)
+        except Exception as e:
+            print('An error occurred uploading file to S3')
+            print(e)
+    return redirect('expenses_detail', expense_id=expense_id)

@@ -26,4 +26,28 @@
   </div>
 </div>
 
+{% for photo in expense.photo_set.all %}
+  <img
+    src="{{ photo.url }}"
+    alt="photo of {{ expense.name }}"
+    class="responsive-img card-panel"
+  >
+{% empty %}
+  <div class="card-panel red-text center-align">
+    No photos uploaded.
+  </div>
+{% endfor %}
+
+<form 
+  action="{% url 'add_photo' expense.id %}"
+  enctype="multipart/form-data"
+  method="POST"
+  class="card-panel row"
+>
+  {% csrf_token %}
+  <input type="file" name="photo-file" required>
+  <br>
+  <button type="submit" class="btn red darken-4 waves-effect waves-light col s12">Upload Photo</button>
+</form>
+
 {% endblock %}
