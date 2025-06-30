@@ -178,7 +178,11 @@ class LedgerUpdate(LoginRequiredMixin, UpdateView):
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
+        # Pass the logged in user to the form:
         kwargs['user'] = self.request.user
+        # Pass the ledger's creator to the form:
+        ledger = self.get_object()
+        kwargs['creator'] = ledger.creator
         return kwargs
 
 

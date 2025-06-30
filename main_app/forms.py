@@ -8,9 +8,14 @@ class LedgerForm(ModelForm):
 
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user', None)
+        creator = kwargs.pop('creator', None)
         super().__init__(*args, **kwargs)
+        queryset = self.fields['members'].queryset
         if user:
-            self.fields['members'].queryset = self.fields['members'].queryset.exclude(id=user.id)
+            queryset = queryset.exclude(id=user.id)
+        if creator:
+            queryset = queryset.exclude(id=creator.id)
+        self.fields['members'].queryset = queryset
 
 
 class ExpenseForm(ModelForm):
