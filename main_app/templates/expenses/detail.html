@@ -26,17 +26,47 @@
   </div>
 </div>
 
+<div class="card-panel row">
 {% for photo in expense.photo_set.all %}
-  <img
-    src="{{ photo.url }}"
-    alt="photo of {{ expense.name }}"
-    class="responsive-img card-panel"
-  >
-{% empty %}
-  <div class="card-panel red-text center-align">
-    No photos uploaded.
+  <div class="col s6 m4 l3">
+    <img
+      src="{{ photo.url }}"
+      alt="photo of {{ expense.name }}"
+      class="responsive-img"
+    >
+    <button
+      data-target="modal{{ forloop.counter }}"
+      class="btn-small red darken-4 waves-effect waves-light modal-trigger col s12"
+    >
+      Remove
+    </button>
   </div>
+
+  <div id="modal{{ forloop.counter }}" class="modal">
+  <form action="{% url 'delete_photo' expense.id photo.id %}" method="POST">
+    {% csrf_token %}
+    <div class="modal-content">
+      <h5>Delete Photo:<i class="small material-icons modal-close right">close</i></h5>
+      <p>
+        Are you sure you want delete this photo?
+      </p>
+    </div>
+    <div class="modal-footer row">
+      <button
+        type="submit"
+        class="btn red darken-4 waves-effect waves-light col s12">
+        Yes - Delete
+      </button>
+    </div>
+  </form>
+</div>
+
+{% empty %}
+  <span class="red-text center-align">
+    No photos uploaded.
+  </span>
 {% endfor %}
+</div>
 
 <form 
   action="{% url 'add_photo' expense.id %}"
@@ -49,5 +79,10 @@
   <br>
   <button type="submit" class="btn red darken-4 waves-effect waves-light col s12">Upload Photo</button>
 </form>
+
+<script>
+  const modalEls = document.querySelectorAll('.modal');
+  M.Modal.init(modalEls);
+</script>
 
 {% endblock %}

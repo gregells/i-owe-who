@@ -259,3 +259,21 @@ def add_photo(request, expense_id):
             print('An error occurred uploading file to S3')
             print(e)
     return redirect('expenses_detail', expense_id=expense_id)
+
+
+@login_required
+def delete_photo(request, expense_id, photo_id):
+    s3 = boto3.client('s3')
+    # Get the photo to be deleted from the database:
+    photo = Photo.objects.get(id=photo_id)
+    key = photo.url.split('/')[-1]
+    # Use a try-except block to handle any errors that may occur:
+    try:
+        bucket = os.environ['S3_BUCKET']
+        # Delete the photo from S3 and our database:
+        s3.delete_object(Bucket=bucket, Key=key)
+        photo.delete()
+    except Exception as e:
+        print('An error occurred deleting file from S3')
+        print(e)
+    return redirect('expenses_detail', expense_id=expense_id)
