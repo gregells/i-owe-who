@@ -32,7 +32,7 @@
     <img
       src="{{ photo.url }}"
       alt="photo of {{ expense.name }}"
-      class="responsive-img"
+      class="responsive-img materialboxed"
     >
     <button
       data-target="modal{{ forloop.counter }}"
@@ -83,6 +83,8 @@
 <script>
   const modalEls = document.querySelectorAll('.modal');
   M.Modal.init(modalEls);
+  const elems = document.querySelectorAll('.materialboxed');
+  M.Materialbox.init(elems);
 </script>
 
 {% endblock %}
