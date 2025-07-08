@@ -30,6 +30,7 @@ ul.sidenav > li > form > button.logout-btn {
   width: 100%;
   padding: 0 32px;
   text-align: left;
+  font-weight: 500;
 }
 
 .logout-btn:hover,
