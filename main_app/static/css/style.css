@@ -40,6 +40,30 @@ ul.sidenav > li > form > button.logout-btn:focus {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
+.btn, .btn-large, .btn-small {
+  background-color: hsl(0, 73%, 41%);
+}
+
+.btn:hover, .btn-large:hover, .btn-small:hover {
+  background-color: hsl(0, 73%, 51%);
+}
+
+.btn:focus, .btn-large:focus, .btn-small:focus {
+  background-color: hsl(0, 73%, 31%);
+}
+
+.btn2 {
+  background-color: hsl(34, 73%, 41%);
+}
+
+.btn2:hover {
+  background-color: hsl(34, 73%, 51%);
+}
+
+.btn2:focus {
+  background-color: hsl(34, 73%, 31%);
+}
+
 .sidenav {
   background-color: #424242;
 }

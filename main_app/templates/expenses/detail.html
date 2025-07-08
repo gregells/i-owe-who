@@ -36,7 +36,7 @@
     >
     <button
       data-target="modal{{ forloop.counter }}"
-      class="btn-small red darken-4 waves-effect waves-light modal-trigger"
+      class="btn-small waves-effect waves-light modal-trigger"
     >
       Remove
     </button>
@@ -54,7 +54,7 @@
     <div class="modal-footer row">
       <button
         type="submit"
-        class="btn red darken-4 waves-effect waves-light col s12">
+        class="btn waves-effect waves-light col s12">
         Yes - Delete
       </button>
     </div>
@@ -76,7 +76,7 @@
 >
   {% csrf_token %}
   <div class="file-field input-field">
-    <div class="btn red darken-4 waves-effect waves-light">
+    <div class="btn waves-effect waves-light">
       <span>File</span>
       <input type="file" name="photo-file" required>
     </div>
@@ -84,7 +84,7 @@
       <input class="file-path validate" type="text">
     </div>
   </div>
-  <button type="submit" class="btn red darken-4 waves-effect waves-light col s12">Upload Photo</button>
+  <button type="submit" class="btn waves-effect waves-light col s12">Upload Photo</button>
 </form>
 
 <script>

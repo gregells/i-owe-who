@@ -16,7 +16,7 @@
 <div class="row">
   <button
     data-target="send-request-modal"
-    class="btn red darken-4 waves-effect waves-light modal-trigger col s12"
+    class="btn waves-effect waves-light modal-trigger col s12"
   >
     Add a friend
   </button>
@@ -30,7 +30,7 @@
       <label for="username" class="">Username:</label>
       <input type="text" name="username" required>
     </p>
-    <button type="submit" class="btn red darken-4 waves-effect waves-light col s12">Send request</button>
+    <button type="submit" class="btn waves-effect waves-light col s12">Send request</button>
   </form>
 </div>
 
@@ -59,7 +59,7 @@
         <span>{{ request.user.username }}</span>
         <form action="{% url 'accept_friend_request' request.user.id %}" method="POST">
           {% csrf_token %}
-          <button type="submit" class="btn-small red darken-4 waves-effect waves-light">Accept</button>
+          <button type="submit" class="btn-small waves-effect waves-light">Accept</button>
         </form>
       </div>
     </li>
@@ -78,7 +78,7 @@
         <span>{{ invite.username }}</span>
         <form action="{% url 'cancel_friend_request' invite.id %}" method="POST">
           {% csrf_token %}
-          <button type="submit" class="btn-small red darken-4 waves-effect waves-light">Cancel</button>
+          <button type="submit" class="btn-small waves-effect waves-light">Cancel</button>
         </form>
       </div>
     </li>
@@ -97,7 +97,7 @@
         <span>{{ friend.username }}</span>
         <button
           data-target="modal{{ forloop.counter }}"
-          class="btn-small red darken-4 waves-effect waves-light modal-trigger"
+          class="btn-small waves-effect waves-light modal-trigger"
         >
           Remove
         </button>
@@ -118,7 +118,7 @@
         <div class="modal-footer row">
           <button
             type="submit"
-            class="btn red darken-4 waves-effect waves-light col s12">
+            class="btn waves-effect waves-light col s12">
             Yes - Remove
           </button>
         </div>
