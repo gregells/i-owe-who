@@ -75,8 +75,15 @@
   class="card-panel row"
 >
   {% csrf_token %}
-  <input type="file" name="photo-file" required>
-  <br>
+  <div class="file-field input-field">
+    <div class="btn red darken-4 waves-effect waves-light">
+      <span>File</span>
+      <input type="file" name="photo-file" required>
+    </div>
+    <div class="file-path-wrapper">
+      <input class="file-path validate" type="text">
+    </div>
+  </div>
   <button type="submit" class="btn red darken-4 waves-effect waves-light col s12">Upload Photo</button>
 </form>
 
