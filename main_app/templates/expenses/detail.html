@@ -43,23 +43,23 @@
   </div>
 
   <div id="modal{{ forloop.counter }}" class="modal">
-  <form action="{% url 'delete_photo' expense.id photo.id %}" method="POST">
-    {% csrf_token %}
-    <div class="modal-content">
-      <h5>Delete Photo:<i class="small material-icons modal-close right">close</i></h5>
-      <p>
-        Are you sure you want delete this photo?
-      </p>
-    </div>
-    <div class="modal-footer row">
-      <button
-        type="submit"
-        class="btn waves-effect waves-light col s12">
-        Yes - Delete
-      </button>
-    </div>
-  </form>
-</div>
+    <form action="{% url 'delete_photo' expense.id photo.id %}" method="POST">
+      {% csrf_token %}
+      <div class="modal-content">
+        <h5>Delete Photo:<i class="small material-icons modal-close right">close</i></h5>
+        <p>
+          Are you sure you want delete this photo?
+        </p>
+      </div>
+      <div class="modal-footer row">
+        <button
+          type="submit"
+          class="btn waves-effect waves-light col s12">
+          Yes - Delete
+        </button>
+      </div>
+    </form>
+  </div>
 
 {% empty %}
   <span class="red-text center-align">
