@@ -262,3 +262,14 @@ li.collection-item > div {
 .card-panel {
   background-color: #424242;
 }
+
+div.photos-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 15px 10px;
+}
+
+div.photos-card > div > button {
+  margin-top: 5px;
+  width: 100%;
+}

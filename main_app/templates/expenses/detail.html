@@ -26,9 +26,9 @@
   </div>
 </div>
 
-<div class="card-panel row">
+<div class="card-panel photos-card">
 {% for photo in expense.photo_set.all %}
-  <div class="col s6 m4 l3">
+  <div>
     <img
       src="{{ photo.url }}"
       alt="photo of {{ expense.name }}"
@@ -36,7 +36,7 @@
     >
     <button
       data-target="modal{{ forloop.counter }}"
-      class="btn-small red darken-4 waves-effect waves-light modal-trigger col s12"
+      class="btn-small red darken-4 waves-effect waves-light modal-trigger"
     >
       Remove
     </button>
