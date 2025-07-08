@@ -265,8 +265,26 @@ li.collection-item > div {
 
 div.photos-card {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 15px 10px;
+}
+
+@media (width >= 600px) {
+  div.photos-card {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (width >= 992px) {
+  div.photos-card {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+@media (width >= 1200px) {
+  div.photos-card {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
 }
 
 div.photos-card > div > button {
