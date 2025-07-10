@@ -235,8 +235,29 @@ class ExpenseUpdate(LoginRequiredMixin, UpdateView):
 
 class ExpenseDelete(LoginRequiredMixin, DeleteView):
     model = Expense
+    
     def get_success_url(self):
         return self.object.ledger.get_absolute_url()
+    
+    def form_valid(self, form):
+        # Get the expense object to be deleted:
+        expense = self.get_object()
+        # Delete all photos associated with this expense from Amazon S3:
+        s3 = boto3.client('s3')
+        bucket = os.environ['S3_BUCKET']
+        for photo in expense.photo_set.all():
+            key = photo.url.split('/')[-1]
+            # Use a try-except block to handle any errors that may occur:
+            try:
+                # Delete the photo from S3 and our database:
+                s3.delete_object(Bucket=bucket, Key=key)
+                photo.delete()
+                print(f'Deleted photo {photo.id} from S3 and database')
+            except Exception as e:
+                print('An error occurred deleting file from S3')
+                print(e)
+        # Now call the superclass form_valid method to delete the expense:
+        return super().form_valid(form)
 
 
 @login_required
