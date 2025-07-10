@@ -235,7 +235,8 @@ class ExpenseUpdate(LoginRequiredMixin, UpdateView):
 
 class ExpenseDelete(LoginRequiredMixin, DeleteView):
     model = Expense
-    success_url = '/ledgers'
+    def get_success_url(self):
+        return self.object.ledger.get_absolute_url()
 
 
 @login_required
