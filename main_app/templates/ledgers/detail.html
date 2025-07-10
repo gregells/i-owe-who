@@ -103,6 +103,7 @@
               <p>Date: {{ expense.date|date:"Y-m-d" }}</p>
               <p>Amount: {{ ledger.get_currency_display|slice:"-1:" }}{{ expense.amount }}</p>
               <p>Paid by: {{ expense.user }}</p>
+              <p>Photo added: {{ expense.photo_set.count|yesno:"Yes,No" }}</p>
               <p class="grey-text">Created at: {{ expense.created_at|date:"Y-m-d g:i a" }}</p>
               <p class="grey-text">Updated at: {{ expense.updated_at|date:"Y-m-d g:i a" }}</p>
             </div>
