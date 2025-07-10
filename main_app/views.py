@@ -252,7 +252,6 @@ class ExpenseDelete(LoginRequiredMixin, DeleteView):
                 # Delete the photo from S3 and our database:
                 s3.delete_object(Bucket=bucket, Key=key)
                 photo.delete()
-                print(f'Deleted photo {photo.id} from S3 and database')
             except Exception as e:
                 print('An error occurred deleting file from S3')
                 print(e)
