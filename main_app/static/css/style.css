@@ -320,3 +320,11 @@ div.photos-card > div > button {
   margin-top: 5px;
   width: 100%;
 }
+
+.hoverable {
+  border: 1px solid rgb(85, 85, 85);
+}
+
+.hoverable:hover {
+  border: 1px solid #b71c1c;
+}

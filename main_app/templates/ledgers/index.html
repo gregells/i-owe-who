@@ -4,7 +4,7 @@
 <h3>My Ledgers</h3>
 
 {% for ledger in ledgers %}
-  <div class="card grey darken-3">
+  <div class="card grey darken-3 hoverable">
     <a href="{% url 'ledgers_detail' ledger.id %}">
       <div class="card-content white-text">
         <span class="card-title">{{ ledger.name }}</span>
