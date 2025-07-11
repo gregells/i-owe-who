@@ -103,7 +103,7 @@
     <li class="collection-item avatar">
       <a class="modal-trigger" href="#modal{{ forloop.counter }}">
         <span class="expense-amount">{{ ledger.get_currency_display|slice:"-1:" }}{{ expense.amount }}</span>
-        <p class="title">{{ expense.name }}</p>
+        <p class="title truncate">{{ expense.name }}</p>
         <p>
             Date: {{ expense.date|date:"Y-m-d" }} <br>
             Paid by: {{ expense.user }}
