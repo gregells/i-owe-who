@@ -16,6 +16,7 @@
     <span class="card-title">{{ ledger.name }}</span>
     <p>Description: {{ ledger.description|linebreaks }}</p>
     <p>Currency: {{ ledger.get_currency_display }}</p>
+    <p>Expenses added: {{ ledger.expense_set.count }}</p>
     <p>Created by: {{ ledger.creator }}</p>
     <p>Members:
       {% if ledger.members.count > 0 %}
