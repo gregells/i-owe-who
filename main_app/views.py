@@ -257,6 +257,8 @@ class ExpenseDelete(LoginRequiredMixin, DeleteView):
             except Exception as e:
                 print('An error occurred deleting file from S3')
                 print(e)
+        # Trigger a save on the ledger to update its updated_at field:
+        expense.ledger.save()
         # Now call the superclass form_valid method to delete the expense:
         return super().form_valid(form)
 
