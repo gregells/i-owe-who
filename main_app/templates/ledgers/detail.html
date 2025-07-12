@@ -100,7 +100,7 @@
       </div>
     </div>
     <!-- The collection-item for each expense -->
-    <li class="collection-item avatar">
+    <li class="collection-item avatar hoverable">
       <a class="modal-trigger" href="#modal{{ forloop.counter }}">
         <span class="expense-amount">{{ ledger.get_currency_display|slice:"-1:" }}{{ expense.amount }}</span>
         <p class="title truncate">{{ expense.name }}</p>

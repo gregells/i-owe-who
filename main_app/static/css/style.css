@@ -336,10 +336,16 @@ div.photos-card > div > button {
   width: 100%;
 }
 
-.hoverable {
+card.hoverable {
   border: 1px solid rgb(85, 85, 85);
 }
 
-.hoverable:hover {
+card.hoverable:hover {
   border: 1px solid #b71c1c;
+}
+
+.collection-item.avatar.hoverable:hover {
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  z-index: 1;
+  background-color: rgba(158, 158, 158, 0.35);
 }
