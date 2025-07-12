@@ -234,6 +234,14 @@ class ExpenseUpdate(LoginRequiredMixin, UpdateView):
     model = Expense
     fields = ['name', 'amount', 'date']
 
+    def form_valid(self, form):
+        # Get the expense object being updated:
+        expense = self.get_object()
+        # Trigger a save on the ledger to update its updated_at field:
+        expense.ledger.save()
+        # Now call the superclass form_valid method to save the changes:
+        return super().form_valid(form)
+
 
 class ExpenseDelete(LoginRequiredMixin, DeleteView):
     model = Expense
