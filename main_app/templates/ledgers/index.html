@@ -3,6 +3,17 @@
 
 <h3>My Ledgers</h3>
 
+{% if ledgers.count > 0 %}
+  <p>
+    Recently updated ledgers will appear first.
+  </p>
+{% else %}
+  <p>
+    <em>
+      You don't have any ledgers yet. Ledgers you create or get added to will appear here.
+    </em>
+  </p>
+{% endif %}
 {% for ledger in ledgers %}
   <div class="card grey darken-3 hoverable">
     <a href="{% url 'ledgers_detail' ledger.id %}">
@@ -21,12 +32,6 @@
       </div>
     </a>
   </div>
-{% empty %}
-  <p>
-    <em>
-      You don't have any ledgers yet. Ledgers you create or get added to will appear here.
-    </em>
-  </p>
 {% endfor %}
 
 {% endblock %}

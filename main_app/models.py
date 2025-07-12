@@ -35,6 +35,9 @@ class Ledger(models.Model):
     )
     creator = models.ForeignKey(User, on_delete=models.CASCADE, related_name='ledgers_created')
     members = models.ManyToManyField(User, blank=True, related_name='ledgers_joined')
+    
+    class Meta:
+        ordering = ['-updated_at']
 
     def __str__(self):
         return self.name
