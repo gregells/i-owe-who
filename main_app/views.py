@@ -34,6 +34,9 @@ def signup(request):
             # Create a profile for the new user:
             Profile.objects.create(user=user)
             return redirect('home')
+        elif form.errors.get('username'):
+            # If the username is already taken, let the user know:
+            error_message = 'Username already taken.'
         else:
             error_message = 'Invalid sign up - try again'
     # A bad POST or a GET request, so render signup.html with an empty form:
