@@ -336,11 +336,11 @@ div.photos-card > div > button {
   width: 100%;
 }
 
-card.hoverable {
+.card.hoverable {
   border: 1px solid rgb(85, 85, 85);
 }
 
-card.hoverable:hover {
+.card.hoverable:hover {
   border: 1px solid #b71c1c;
 }
 
