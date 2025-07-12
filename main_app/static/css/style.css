@@ -353,3 +353,7 @@ div.modal-footer > .btn {
   z-index: 1;
   background-color: rgba(158, 158, 158, 0.35);
 }
+
+ul.errorlist > li {
+  color: #F44336;
+}
