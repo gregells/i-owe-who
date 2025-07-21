@@ -92,18 +92,7 @@
 <ul class="collection with-header">
   <li class="collection-header"><h4>Friends</h4></li>
   {% for friend in user.profile.friends.all %}
-    <li class="collection-item">
-      <div>
-        <span>{{ friend.username }}</span>
-        <button
-          data-target="modal{{ forloop.counter }}"
-          class="btn-small waves-effect waves-light modal-trigger"
-        >
-          Remove
-        </button>
-      </div>
-    </li>
-    
+    <!-- Modal for deleting friend -->
     <div id="modal{{ forloop.counter }}" class="modal">
       <form action="{% url 'remove_friend' friend.id %}" method="POST">
         {% csrf_token %}
@@ -124,6 +113,18 @@
         </div>
       </form>
     </div>
+    <!-- Collection item for each friend -->
+    <li class="collection-item">
+      <div>
+        <span>{{ friend.username }}</span>
+        <button
+          data-target="modal{{ forloop.counter }}"
+          class="btn-small waves-effect waves-light modal-trigger"
+        >
+          Remove
+        </button>
+      </div>
+    </li>
   {% empty %}
     <li class="collection-item">
       <div><em>No friends added yet.</em></div>
