@@ -53,7 +53,7 @@
       <tr class="last-row">
         <td>All members</td>
         <td class="right-align">
-            {{ ledger.get_currency_display|slice:"-1:" }}{{ ledger.get_total_spent }}
+          {{ ledger.get_currency_display|slice:"-1:" }}{{ ledger.get_total_spent }}
         </td>
       </tr>
     </tbody>
@@ -106,8 +106,8 @@
         <span class="expense-amount">{{ ledger.get_currency_display|slice:"-1:" }}{{ expense.amount }}</span>
         <p class="title truncate">{{ expense.name }}</p>
         <p>
-            Date: {{ expense.date|date:"Y-m-d" }} <br>
-            Paid by: {{ expense.user }}
+          Date: {{ expense.date|date:"Y-m-d" }} <br>
+          Paid by: {{ expense.user }}
         </p>
       </a>
     </li>
