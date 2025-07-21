@@ -159,6 +159,10 @@ textarea.materialize-textarea.valid:focus,
   padding: 4px 10px;
 }
 
+.modal .modal-footer.double {
+  height: auto;
+}
+
 .modal.bottom-sheet {
   max-height: 80%;
 }
