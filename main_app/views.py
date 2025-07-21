@@ -209,6 +209,15 @@ class LedgerDelete(LoginRequiredMixin, DeleteView):
 
 
 @login_required
+def expenses_index(request):
+    # Get all expenses where the current user is the owner:
+    expenses = Expense.objects.filter(user=request.user)
+    return render(request, 'expenses/index.html', {
+        'expenses': expenses
+    })
+
+
+@login_required
 def add_expense(request, ledger_id):
     # Create an ExpenseForm instance using the data from the request:
     expense_form = ExpenseForm(request.POST)

@@ -22,6 +22,7 @@
         {% if user.is_authenticated %}
           <li><a href="{% url 'ledgers_index' %}">My Ledgers</a></li>
           <li><a href="{% url 'ledgers_create' %}">Add Ledger</a></li>
+          <li><a href="{% url 'expenses_index' %}">My Expenses</a></li>
           <li><a href="{% url 'my_profile' %}">My Profile</a></li>
           <li>
             <form method="POST" action="{% url 'logout' %}">
@@ -41,6 +42,7 @@
     {% if user.is_authenticated %}
       <li><a href="{% url 'ledgers_index' %}">My Ledgers</a></li>
       <li><a href="{% url 'ledgers_create' %}">Add Ledger</a></li>
+      <li><a href="{% url 'expenses_index' %}">My Expenses</a></li>
       <li><a href="{% url 'my_profile' %}">My Profile</a></li>
       <li>
         <form method="POST" action="{% url 'logout' %}">

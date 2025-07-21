@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h3>My Expenses</h3>
+
+<ul class="collection">
+  {% for expense in expenses.all %}
+    <!-- The Modal for each expense -->
+    <div id="modal{{ forloop.counter }}" class="modal expense-modal">
+      <div class="modal-content">
+        <h5>Expense Details:<i class="small material-icons modal-close right">close</i></h5>
+        <p>Name: {{ expense.name }}</p>
+        <p>Date: {{ expense.date|date:"Y-m-d" }}</p>
+        <p>Amount: {{ expense.ledger.get_currency_display|slice:"-1:" }}{{ expense.amount }}</p>
+        <p>Ledger: {{ expense.ledger.name }}</p>
+        <p>Photo added: {{ expense.photo_set.count|yesno:"Yes,No" }}</p>
+        <p class="grey-text">Created at: {{ expense.created_at|date:"Y-m-d g:i a" }}</p>
+        <p class="grey-text">Updated at: {{ expense.updated_at|date:"Y-m-d g:i a" }}</p>
+      </div>
+      <div class="modal-footer">
+        <a
+          href="{% url 'expenses_detail' expense.id %}"
+          class="btn waves-effect waves-light col s12">
+          View Expense
+        </a>
+      </div>
+    </div>
+    <!-- The collection-item for each expense -->
+    <li class="collection-item avatar hoverable">
+      <a class="modal-trigger" href="#modal{{ forloop.counter }}">
+        <span class="expense-amount">{{ expense.ledger.get_currency_display|slice:"-1:" }}{{ expense.amount }}</span>
+        <p class="title truncate">{{ expense.name }}</p>
+        <p class="truncate">
+          Date: {{ expense.date|date:"Y-m-d" }} <br>
+          Ledger: {{ expense.ledger.name }}
+        </p>
+      </a>
+    </li>
+  {% empty %}
+    <li class="collection-item">
+      <p class="title">No expenses added yet.</p>
+    </li>
+  {% endfor %}
+</ul>
+
+<script>
+  const modalEls = document.querySelectorAll('.expense-modal');
+  M.Modal.init(modalEls);
+</script>
+
+{% endblock %}
