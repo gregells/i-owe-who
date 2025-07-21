@@ -6,17 +6,6 @@
 {% if user.is_authenticated %}
   <p>Welcome back, {{ user.username }}!</p>
   <h5>Recently updated ledgers:</h5>
-  {% if ledgers.count > 0 %}
-    <p>
-      Most recently updated ledgers will appear first.
-    </p>
-  {% else %}
-    <p>
-      <em>
-        You don't have any ledgers yet. Ledgers you create or get added to will appear here.
-      </em>
-    </p>
-  {% endif %}
   {% for ledger in ledgers %}
     <div class="card grey darken-3 hoverable">
       <a href="{% url 'ledgers_detail' ledger.id %}">
@@ -35,6 +24,12 @@
         </div>
       </a>
     </div>
+  {% empty %}
+    <p>
+      <em>
+        You don't have any ledgers yet. Ledgers you create or get added to will appear here.
+      </em>
+    </p>
   {% endfor %}
 
   <h5>Recently added expenses:</h5>
