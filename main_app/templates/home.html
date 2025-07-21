@@ -6,8 +6,15 @@
 {% if user.is_authenticated %}
   <p>Welcome back, {{ user.username }}!</p>
 {% else %}
-  <p>Welcome to <em>I Owe Who</em>! Please <a href="{% url 'login' %}" class="red-text">Log In</a> or <a href="{% url 'signup' %}" class="red-text">Sign Up</a> to get started.</p>
-  <p>Learn more about <em>I Owe Who</em> at the <a href="{% url 'about' %}" class="red-text">About page</a>.</p>
+  <p>
+    Welcome to <em>I Owe Who</em>! Please 
+    <a href="{% url 'login' %}" class="red-text">Log In</a> or 
+    <a href="{% url 'signup' %}" class="red-text">Sign Up</a> to get started.
+  </p>
+  <p>
+    Learn more about <em>I Owe Who</em> at the 
+    <a href="{% url 'about' %}" class="red-text">About page</a>.
+  </p>
 {% endif %}
 
 {% endblock %}
