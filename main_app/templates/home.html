@@ -47,7 +47,7 @@
           <p>Name: {{ expense.name }}</p>
           <p>Date: {{ expense.date|date:"Y-m-d" }}</p>
           <p>Amount: {{ ledger.get_currency_display|slice:"-1:" }}{{ expense.amount }}</p>
-          <p>Paid by: {{ expense.user }}</p>
+          <p>Ledger: {{ expense.ledger.name }}</p>
           <p>Photo added: {{ expense.photo_set.count|yesno:"Yes,No" }}</p>
           <p class="grey-text">Created at: {{ expense.created_at|date:"Y-m-d g:i a" }}</p>
           <p class="grey-text">Updated at: {{ expense.updated_at|date:"Y-m-d g:i a" }}</p>
@@ -65,9 +65,9 @@
         <a class="modal-trigger" href="#modal{{ forloop.counter }}">
           <span class="expense-amount">{{ expense.ledger.get_currency_display|slice:"-1:" }}{{ expense.amount }}</span>
           <p class="title truncate">{{ expense.name }}</p>
-          <p>
+          <p class="truncate">
             Date: {{ expense.date|date:"Y-m-d" }} <br>
-            Paid by: {{ expense.user }}
+            Ledger: {{ expense.ledger.name }}
           </p>
         </a>
       </li>
