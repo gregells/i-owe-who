@@ -47,7 +47,12 @@
           <p class="grey-text">Created at: {{ expense.created_at|date:"Y-m-d g:i a" }}</p>
           <p class="grey-text">Updated at: {{ expense.updated_at|date:"Y-m-d g:i a" }}</p>
         </div>
-        <div class="modal-footer">
+        <div class="modal-footer double">
+          <a
+            href="{% url 'ledgers_detail' expense.ledger.id %}"
+            class="btn btn2 waves-effect waves-light col s12">
+            View Ledger
+          </a>
           <a
             href="{% url 'expenses_detail' expense.id %}"
             class="btn waves-effect waves-light col s12">
