@@ -5,6 +5,37 @@
 
 {% if user.is_authenticated %}
   <p>Welcome back, {{ user.username }}!</p>
+  <h5>Recently updated ledgers:</h5>
+  {% if ledgers.count > 0 %}
+    <p>
+      Most recently updated ledgers will appear first.
+    </p>
+  {% else %}
+    <p>
+      <em>
+        You don't have any ledgers yet. Ledgers you create or get added to will appear here.
+      </em>
+    </p>
+  {% endif %}
+  {% for ledger in ledgers %}
+    <div class="card grey darken-3 hoverable">
+      <a href="{% url 'ledgers_detail' ledger.id %}">
+        <div class="card-content white-text">
+          <span class="card-title">{{ ledger.name }}</span>
+          <p>Currency: {{ ledger.currency }}</p>
+          <p>Created by: {{ ledger.creator }}</p>
+          <p>Members:
+            {% if ledger.members.count > 0 %}
+              {{ ledger.members.all|join:', ' }}
+            {% else %}
+              No members yet.
+            {% endif %}
+          </p>
+          <p class="grey-text">Last updated: {{ ledger.updated_at|date:"Y-m-d g:i a" }}</p>
+        </div>
+      </a>
+    </div>
+  {% endfor %}
 {% else %}
   <p>
     Welcome to <em>I Owe Who</em>! Please 
