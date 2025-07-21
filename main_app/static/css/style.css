@@ -175,6 +175,10 @@ div.modal-content > h5 > i {
   margin-right: -10px;
 }
 
+div.modal-content > p:last-child {
+  margin-bottom: 0;
+}
+
 .datepicker-date-display {
   background-color: #b71c1c;
 }
