@@ -5,19 +5,27 @@
 
 <p>
   <em>I Owe Who</em> is a website where you can track and manage IOUs with friends and family. 
-  Create an account at the Sign Up page to get started.
+  Create an account at the 
+  <a href="{% url 'signup' %}" class="red-text">Sign Up</a>
+  page to get started.
 </p>
 <p>
   Once you have an account, you can send and accept new friend requests, 
-  as well as manage your existing friend list, from the My Profile page.
+  as well as manage your existing friend list, from the
+  <a href="{% url 'my_profile' %}" class="red-text">My Profile</a>
+  page.
 </p>
 <p>
   Expenses are grouped into ledgers, which can be for a group of users or just you.
-  A ledger can be created from the Add Ledger page. Users on your friend list can be added to the ledger,
+  A ledger can be created from the
+  <a href="{% url 'ledgers_create' %}" class="red-text">Add Ledger</a>
+  page. Users on your friend list can be added to the ledger,
   and any user you add to the ledger can then add users they are friends with to the ledger.
 </p>
 <p>
-  To see a list of all the ledgers you've created or been added to, go to the My Ledgers page.
+  To see a list of all the ledgers you've created or been added to, go to the
+  <a href="{% url 'ledgers_index' %}" class="red-text">My Ledgers</a>
+  page.
   Click on a ledger to view its details, including the list of expenses and the users involved.
 </p>
 <p>
