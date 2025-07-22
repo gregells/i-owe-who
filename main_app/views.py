@@ -207,6 +207,27 @@ class LedgerDelete(LoginRequiredMixin, DeleteView):
     model = Ledger
     success_url = '/ledgers'
 
+    def form_valid(self, form):
+        # Get the ledger object to be deleted:
+        ledger = self.get_object()
+        # Set up the Amazon S3 variables:
+        s3 = boto3.client('s3')
+        bucket = os.environ['S3_BUCKET']
+        # Loop through all expenses on the ledger and delete their photos from Amazon S3:
+        for expense in ledger.expense_set.all():
+            for photo in expense.photo_set.all():
+                key = photo.url.split('/')[-1]
+                # Use a try-except block to handle any errors that may occur:
+                try:
+                    # Delete the photo from S3 and our database:
+                    s3.delete_object(Bucket=bucket, Key=key)
+                    photo.delete()
+                except Exception as e:
+                    print('An error occurred deleting file from S3')
+                    print(e)
+        # Now call the superclass form_valid method to delete the expense:
+        return super().form_valid(form)
+
 
 @login_required
 def expenses_index(request):
