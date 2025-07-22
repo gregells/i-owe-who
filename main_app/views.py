@@ -151,7 +151,7 @@ def remove_friend(request, user_id):
 @login_required
 def ledgers_index(request):
     # Get all ledgers where the current user is either the creator or a member:
-    ledgers = Ledger.objects.filter(Q(creator=request.user) | Q(members=request.user))
+    ledgers = Ledger.objects.filter(Q(creator=request.user) | Q(members=request.user)).distinct()
     return render(request, 'ledgers/index.html', {
         'ledgers': ledgers
     })
