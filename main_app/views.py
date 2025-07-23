@@ -239,6 +239,19 @@ def expenses_index(request):
 
 
 @login_required
+def expenses_detail(request, expense_id):
+    expense = Expense.objects.get(id=expense_id)
+    # Redirect back to index page if user is not the creator or a member of the ledger
+    #   that the expense belongs to:
+    if request.user != expense.ledger.creator and request.user not in expense.ledger.members.all():
+        return redirect('ledgers_index')
+    
+    return render(request, 'expenses/detail.html', {
+        'expense': expense
+    })
+
+
+@login_required
 def add_expense(request, ledger_id):
     # Create an ExpenseForm instance using the data from the request:
     expense_form = ExpenseForm(request.POST)
@@ -257,19 +270,6 @@ def add_expense(request, ledger_id):
         ledger = Ledger.objects.get(id=ledger_id)
         ledger.save()
     return redirect('ledgers_detail', ledger_id=ledger_id)
-
-
-@login_required
-def expenses_detail(request, expense_id):
-    expense = Expense.objects.get(id=expense_id)
-    # Redirect back to index page if user is not the creator or a member of the ledger
-    #   that the expense belongs to:
-    if request.user != expense.ledger.creator and request.user not in expense.ledger.members.all():
-        return redirect('ledgers_index')
-    
-    return render(request, 'expenses/detail.html', {
-        'expense': expense
-    })
 
 
 class ExpenseUpdate(LoginRequiredMixin, UpdateView):
