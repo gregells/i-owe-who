@@ -317,7 +317,10 @@ class ExpenseDelete(LoginRequiredMixin, DeleteView):
 def expenses_search(request):
     search_term = request.GET.get('term', '')
     # Get expenses by the logged in user that contain the search term in their name:
-    expenses = Expense.objects.filter(name__icontains=search_term, user=request.user)
+    expenses = Expense.objects.filter(
+        Q(name__icontains=search_term) | Q(amount__icontains=search_term),
+        user=request.user
+    )
     return render(request, 'expenses/search.html', {
         'expenses': expenses,
         'search_term': search_term
