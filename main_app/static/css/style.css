@@ -49,17 +49,27 @@ nav .input-field {
   color: white;
 }
 
-.sidenav .input-field > label > .material-icons {
+.sidenav .input-field > label > .material-icons,
+.input-field.edit-search > label > .material-icons {
   position: absolute;
   /* Half the height of the input minus half the height of the icon */
   top: calc(48px/2 - 24px/2);
   left: -6px;
 }
 
-.sidenav .input-field input[type=search] ~ .material-icons {
+.sidenav .input-field input[type=search] ~ .material-icons,
+.input-field.edit-search input[type=search] ~ .material-icons {
   position: absolute;
   /* Half the height of the input minus half the height of the icon */
   top: calc(48px/2 - 28px/2);
+}
+
+.input-field.edit-search input[type=search] {
+  height: 48px;
+  padding-left: 40px;
+  width: calc(100% - 40px);
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 
 .logout-btn:hover,

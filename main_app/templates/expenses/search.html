@@ -7,6 +7,14 @@
   Search term: {{ search_term }}
 </p>
 
+<form method="GET" action="{% url 'expenses_search' %}">
+  <div class="input-field edit-search">
+    <input id="edit-search" type="search" name="term" required value="{{ search_term }}">
+    <label class="label-icon" for="edit-search"><i class="material-icons">search</i></label>
+    <i class="material-icons">close</i>
+  </div>
+</form>
+
 <ul class="collection">
   {% for expense in expenses.all %}
     <!-- The Modal for each expense -->
