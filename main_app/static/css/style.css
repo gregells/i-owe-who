@@ -33,6 +33,35 @@ ul.sidenav > li > form > button.logout-btn {
   font-weight: 500;
 }
 
+nav .input-field {
+  height: 64px;
+}
+
+.sidenav .input-field input[type=search] {
+  height: inherit;
+  padding-left: 32px;
+  width: calc(100% - 32px);
+  border: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: white;
+}
+
+.sidenav .input-field > label > .material-icons {
+  position: absolute;
+  /* Half the height of the input minus half the height of the icon */
+  top: calc(48px/2 - 24px/2);
+  left: -6px;
+}
+
+.sidenav .input-field input[type=search] ~ .material-icons {
+  position: absolute;
+  /* Half the height of the input minus half the height of the icon */
+  top: calc(48px/2 - 28px/2);
+}
+
 .logout-btn:hover,
 .sidenav li > a:hover,
 ul.hide-on-med-and-down > li > form > button.logout-btn:focus,

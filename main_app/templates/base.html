@@ -30,6 +30,15 @@
               <button type="submit" class="logout-btn">Log Out</button>
             </form>
           </li>
+          <li>
+            <form method="GET" action="{% url 'expenses_search' %}">
+              <div class="input-field">
+                <input id="search" type="search" name="term" required placeholder="Search">
+                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                <i class="material-icons">close</i>
+              </div>
+            </form>
+          </li>
         {% else %}
           <li><a href="{% url 'login' %}">Log In</a></li>
           <li><a href="{% url 'signup' %}">Sign Up</a></li>
@@ -48,6 +57,15 @@
         <form method="POST" action="{% url 'logout' %}">
           {% csrf_token %}
           <button type="submit" class="logout-btn">Log Out</button>
+        </form>
+      </li>
+      <li>
+        <form method="GET" action="{% url 'expenses_search' %}">
+          <div class="input-field">
+            <input id="search" type="search" name="term" required placeholder="Search">
+            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+            <i class="material-icons">close</i>
+          </div>
         </form>
       </li>
     {% else %}

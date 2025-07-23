@@ -22,4 +22,5 @@ urlpatterns = [
     path('expenses/<int:pk>/delete/', views.ExpenseDelete.as_view(), name='expenses_delete'),
     path('expenses/<int:expense_id>/add_photo/', views.add_photo, name='add_photo'),
     path('expenses/<int:expense_id>/delete_photo/<int:photo_id>/', views.delete_photo, name='delete_photo'),
+    path('expenses/search/', views.expenses_search, name='expenses_search'),
 ]
