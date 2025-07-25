@@ -21,8 +21,12 @@
     <p class="grey-text">Updated at: {{ expense.updated_at|date:"Y-m-d g:i a" }}</p>
   </div>
   <div class="card-action">
-    <a href="{% url 'expenses_update' expense.id %}">Edit</a>
-    <a href="{% url 'expenses_delete' expense.id %}">Delete</a>
+    {% if user == expense.user or user == expense.ledger.creator %}
+      <a href="{% url 'expenses_update' expense.id %}">Edit</a>
+      <a href="{% url 'expenses_delete' expense.id %}">Delete</a>
+    {% else %}
+      <span class="grey-text"><em>Only the creator of the ledger or this expense can edit or delete.</em></span>
+    {% endif %}
   </div>
 </div>
 

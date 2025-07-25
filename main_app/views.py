@@ -290,6 +290,14 @@ class ExpenseUpdate(LoginRequiredMixin, UpdateView):
     model = Expense
     fields = ['name', 'amount', 'date']
 
+    # Restrict editing to the ledger creator and the expense user:
+    def get(self, request, *args, **kwargs):
+        expense = self.get_object()
+        if request.user == expense.user or request.user == expense.ledger.creator:
+            return super().get(request, *args, **kwargs)
+        else:
+            return redirect('expenses_detail', expense_id=expense.id)
+
     def form_valid(self, form):
         # Get the expense object being updated:
         expense = self.get_object()
@@ -304,6 +312,14 @@ class ExpenseDelete(LoginRequiredMixin, DeleteView):
     
     def get_success_url(self):
         return self.object.ledger.get_absolute_url()
+    
+    # Restrict deleting to the ledger creator and the expense user:
+    def get(self, request, *args, **kwargs):
+        expense = self.get_object()
+        if request.user == expense.user or request.user == expense.ledger.creator:
+            return super().get(request, *args, **kwargs)
+        else:
+            return redirect('expenses_detail', expense_id=expense.id)
     
     def form_valid(self, form):
         # Get the expense object to be deleted:
