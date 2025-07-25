@@ -17,7 +17,7 @@ def home(request):
     if request.user.is_authenticated:
         # Get the 3 most recently updated ledgers where current user is either the creator or a member:
         #  Note: ledgers are already ordered by the updated_at field in descending order by the model.
-        ledgers = Ledger.objects.filter(Q(creator=request.user) | Q(members=request.user))[:3]
+        ledgers = Ledger.objects.filter(Q(creator=request.user) | Q(members=request.user)).distinct()[:3]
         # Get the 5 most recently added expenses by the current user:
         expenses = Expense.objects.filter(user=request.user).order_by('-date', '-created_at')[:5]
         return render(request, 'home.html', {
