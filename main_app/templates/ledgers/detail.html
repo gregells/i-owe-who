@@ -89,7 +89,7 @@
       <div class="modal-content">
         <h5>Expense Details:<i class="small material-icons modal-close right">close</i></h5>
         <p>Name: {{ expense.name }}</p>
-        <p>Date: {{ expense.date|date:"Y-m-d" }}</p>
+        <p>Date: {{ expense.date|date:"Y-m-d D" }}</p>
         <p>Amount: {{ ledger.get_currency_display|slice:"-1:" }}{{ expense.amount }}</p>
         <p>Paid by: {{ expense.user }}</p>
         <p>Photo added: {{ expense.photo_set.count|yesno:"Yes,No" }}</p>
@@ -110,7 +110,7 @@
         <span class="expense-amount">{{ ledger.get_currency_display|slice:"-1:" }}{{ expense.amount }}</span>
         <p class="title truncate">{{ expense.name }}</p>
         <p>
-          Date: {{ expense.date|date:"Y-m-d" }} <br>
+          Date: {{ expense.date|date:"Y-m-d D" }} <br>
           Paid by: {{ expense.user }}
         </p>
       </a>
