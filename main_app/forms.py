@@ -10,10 +10,8 @@ class LedgerForm(ModelForm):
         user = kwargs.pop('user', None)
         creator = kwargs.pop('creator', None)
         super().__init__(*args, **kwargs)
-        queryset = user.profile.friends.all()
-        if creator:
-            queryset = queryset.exclude(id=creator.id)
-        self.fields['members'].queryset = queryset
+        # Use the user's friends as the queryset for members:
+        self.fields['members'].queryset = user.profile.friends.all()
 
 
 class ExpenseForm(ModelForm):

@@ -193,6 +193,13 @@ class LedgerUpdate(LoginRequiredMixin, UpdateView):
     model = Ledger
     form_class = LedgerForm
 
+    # Redirect back to the ledger detail page if the user is not the creator:
+    def get(self, request, *args, **kwargs):
+        ledger = self.get_object()
+        if request.user != ledger.creator:
+            return redirect('ledgers_detail', ledger_id=ledger.id)
+        return super().get(request, *args, **kwargs)
+
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
         # Pass the logged in user to the form:
@@ -206,6 +213,13 @@ class LedgerUpdate(LoginRequiredMixin, UpdateView):
 class LedgerDelete(LoginRequiredMixin, DeleteView):
     model = Ledger
     success_url = '/ledgers'
+
+    # Redirect back to the ledger detail page if the user is not the creator:
+    def get(self, request, *args, **kwargs):
+        ledger = self.get_object()
+        if request.user != ledger.creator:
+            return redirect('ledgers_detail', ledger_id=ledger.id)
+        return super().get(request, *args, **kwargs)
 
     def form_valid(self, form):
         # Get the ledger object to be deleted:
