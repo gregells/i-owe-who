@@ -358,6 +358,7 @@ div.photos-card {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 15px 10px;
+  justify-items: center;
 }
 
 @media (width >= 600px) {
