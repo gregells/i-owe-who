@@ -38,32 +38,38 @@
       alt="photo of {{ expense.name }}"
       class="responsive-img materialboxed"
     >
-    <button
-      data-target="modal{{ forloop.counter }}"
-      class="btn-small waves-effect waves-light modal-trigger"
-    >
-      Remove
-    </button>
+    <!-- Only render the remove photo button for the ledger creator and expense user -->
+    {% if user == expense.user or user == expense.ledger.creator %}
+      <button
+        data-target="modal{{ forloop.counter }}"
+        class="btn-small waves-effect waves-light modal-trigger"
+      >
+        Remove
+      </button>
+    {% endif %}
   </div>
 
-  <div id="modal{{ forloop.counter }}" class="modal">
-    <form action="{% url 'delete_photo' expense.id photo.id %}" method="POST">
-      {% csrf_token %}
-      <div class="modal-content">
-        <h5>Delete Photo:<i class="small material-icons modal-close right">close</i></h5>
-        <p>
-          Are you sure you want delete this photo?
-        </p>
-      </div>
-      <div class="modal-footer row">
-        <button
-          type="submit"
-          class="btn waves-effect waves-light col s12">
-          Yes - Delete
-        </button>
-      </div>
-    </form>
-  </div>
+  <!-- Only render the remove photo modal for the ledger creator and expense user -->
+  {% if user == expense.user or user == expense.ledger.creator %}
+    <div id="modal{{ forloop.counter }}" class="modal">
+      <form action="{% url 'delete_photo' expense.id photo.id %}" method="POST">
+        {% csrf_token %}
+        <div class="modal-content">
+          <h5>Delete Photo:<i class="small material-icons modal-close right">close</i></h5>
+          <p>
+            Are you sure you want delete this photo?
+          </p>
+        </div>
+        <div class="modal-footer row">
+          <button
+            type="submit"
+            class="btn waves-effect waves-light col s12">
+            Yes - Delete
+          </button>
+        </div>
+      </form>
+    </div>
+  {% endif %}
 
 {% empty %}
   <span class="red-text">
@@ -72,24 +78,27 @@
 {% endfor %}
 </div>
 
-<form 
-  action="{% url 'add_photo' expense.id %}"
-  enctype="multipart/form-data"
-  method="POST"
-  class="card-panel row"
->
-  {% csrf_token %}
-  <div class="file-field input-field">
-    <div class="btn waves-effect waves-light">
-      <span>File</span>
-      <input type="file" name="photo-file" required>
+<!-- Only render the photo upload form for the ledger creator and expense user -->
+{% if user == expense.user or user == expense.ledger.creator %}
+  <form 
+    action="{% url 'add_photo' expense.id %}"
+    enctype="multipart/form-data"
+    method="POST"
+    class="card-panel row"
+  >
+    {% csrf_token %}
+    <div class="file-field input-field">
+      <div class="btn waves-effect waves-light">
+        <span>File</span>
+        <input type="file" name="photo-file" required>
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text">
+      </div>
     </div>
-    <div class="file-path-wrapper">
-      <input class="file-path validate" type="text">
-    </div>
-  </div>
-  <button type="submit" class="btn waves-effect waves-light col s12">Upload Photo</button>
-</form>
+    <button type="submit" class="btn waves-effect waves-light col s12">Upload Photo</button>
+  </form>
+{% endif %}
 
 <script>
   const modalEls = document.querySelectorAll('.modal');

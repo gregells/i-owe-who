@@ -359,6 +359,9 @@ def expenses_search(request):
 
 @login_required
 def add_photo(request, expense_id):
+    # Restrict adding photos to the creator of the expense or the ledger:
+    if request.user != Expense.objects.get(id=expense_id).user and request.user != Expense.objects.get(id=expense_id).ledger.creator:
+        return redirect('expenses_detail', expense_id=expense_id)
     # photo-file will be the 'name' attribute on the <input type="file"> field:
     photo_file = request.FILES.get('photo-file', None)
     if photo_file:
@@ -382,6 +385,9 @@ def add_photo(request, expense_id):
 
 @login_required
 def delete_photo(request, expense_id, photo_id):
+    # Restrict adding photos to the creator of the expense or the ledger:
+    if request.user != Expense.objects.get(id=expense_id).user and request.user != Expense.objects.get(id=expense_id).ledger.creator:
+        return redirect('expenses_detail', expense_id=expense_id)
     s3 = boto3.client('s3')
     # Get the photo to be deleted from the database:
     photo = Photo.objects.get(id=photo_id)
