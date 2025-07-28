@@ -19,8 +19,8 @@
   Expenses are grouped into ledgers, which can be for a group of users or just you.
   A ledger can be created from the
   <a href="{% url 'ledgers_create' %}" class="red-text">Add Ledger</a>
-  page. Users on your friend list can be added to the ledger,
-  and any user you add to the ledger can then add users they are friends with to the ledger.
+  page. Users on your friend list can be added to the ledger.
+  Only the creator of the ledger can edit the ledger.
 </p>
 <p>
   To see a list of all the ledgers you've created or been added to, go to the
@@ -29,7 +29,11 @@
   Click on a ledger to view its details, including the list of expenses and the users involved.
 </p>
 <p>
-  To add an expense to a ledger, use the Add Expense button when viewing the ledger's details.
+  To add an expense to a ledger, use the <em>Add Expense</em> button when viewing the ledger's details.
+</p>
+<p>
+  To add photos of a receipt to an expense, use the <em>Upload Photo</em> form when viewing the expense's details.
+  Only the creator of the ledger or the user who added the expense can upload and remove photos.
 </p>
 
 {% endblock %}
