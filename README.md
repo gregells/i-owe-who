@@ -4,6 +4,26 @@ This project is a Django web-app for tracking expenses and IOUs with friends.
 Users must sign up for an account in order to use this web-app.
 
 ## Screenshots:
+<table width="100%">
+  <thead>
+    <tr>
+      <th width="20%"><img src="screenshots/1_home_visitor.png"/></th>
+      <th width="20%"><img src="screenshots/2_about.png"/></th>
+      <th width="20%"><img src="screenshots/3_navbar_visitor.png"/></th>
+      <th width="20%"><img src="screenshots/4_login.png"/></th>
+      <th width="20%"><img src="screenshots/5_navbar_user.png"/></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td width="20%" align="center">Home Page - Visitors</td>
+      <td width="20%" align="center">About Page</td>
+      <td width="20%" align="center">Navbar - Visitors</td>
+      <td width="20%" align="center">Login Page</td>
+      <td width="20%" align="center">Navbar - Users</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Technologies Used:
 * __Django__: to run the backend server.
