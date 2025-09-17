@@ -45,15 +45,15 @@ Users must sign up for an account in order to use this web-app.
     </tr>
   </tbody>
 </table>
-<!-- 
+
 <table width="100%">
   <thead>
     <tr>
       <th width="20%"><img src="screenshots/11_ledger.png"/></th>
       <th width="20%"><img src="screenshots/12_add_expense.png"/></th>
       <th width="20%"><img src="screenshots/13_expense_modal.png"/></th>
-      <th width="20%"><img src="screenshots/14_expense.png"/></th>
-      <th width="20%"><img src="screenshots/15_search.png"/></th>
+      <!-- <th width="20%"><img src="screenshots/14_expense.png"/></th> -->
+      <!-- <th width="20%"><img src="screenshots/15_search.png"/></th> -->
     </tr>
   </thead>
   <tbody>
@@ -65,7 +65,7 @@ Users must sign up for an account in order to use this web-app.
       <td width="20%" align="center">Search Page</td>
     </tr>
   </tbody>
-</table> -->
+</table>
 
 ## Technologies Used:
 * __Django__: to run the backend server.
