@@ -25,6 +25,48 @@ Users must sign up for an account in order to use this web-app.
   </tbody>
 </table>
 
+<table width="100%">
+  <thead>
+    <tr>
+      <th width="20%"><img src="screenshots/6_home_user.png"/></th>
+      <th width="20%"><img src="screenshots/7_my_profile.png"/></th>
+      <!-- <th width="20%"><img src="screenshots/8_add_ledger.png"/></th>
+      <th width="20%"><img src="screenshots/9_my_ledgers.png"/></th>
+      <th width="20%"><img src="screenshots/10_my_expenses.png"/></th> -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td width="20%" align="center">Home Page - Users</td>
+      <td width="20%" align="center">My Profile Page</td>
+      <td width="20%" align="center">Add Ledger Page</td>
+      <td width="20%" align="center">My Ledgers Page</td>
+      <td width="20%" align="center">My Expenses Page</td>
+    </tr>
+  </tbody>
+</table>
+<!-- 
+<table width="100%">
+  <thead>
+    <tr>
+      <th width="20%"><img src="screenshots/11_ledger.png"/></th>
+      <th width="20%"><img src="screenshots/12_add_expense.png"/></th>
+      <th width="20%"><img src="screenshots/13_expense_modal.png"/></th>
+      <th width="20%"><img src="screenshots/14_expense.png"/></th>
+      <th width="20%"><img src="screenshots/15_search.png"/></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td width="20%" align="center">Ledger Detail Page</td>
+      <td width="20%" align="center">Add Expense Form</td>
+      <td width="20%" align="center">Expense Modal</td>
+      <td width="20%" align="center">Expense Detail Page</td>
+      <td width="20%" align="center">Search Page</td>
+    </tr>
+  </tbody>
+</table> -->
+
 ## Technologies Used:
 * __Django__: to run the backend server.
 * __Django Template Language (DTL)__: for the frontend pages.
