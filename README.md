@@ -30,9 +30,9 @@ Users must sign up for an account in order to use this web-app.
     <tr>
       <th width="20%"><img src="screenshots/6_home_user.png"/></th>
       <th width="20%"><img src="screenshots/7_my_profile.png"/></th>
-      <!-- <th width="20%"><img src="screenshots/8_add_ledger.png"/></th>
+      <th width="20%"><img src="screenshots/8_add_ledger.png"/></th>
       <th width="20%"><img src="screenshots/9_my_ledgers.png"/></th>
-      <th width="20%"><img src="screenshots/10_my_expenses.png"/></th> -->
+      <th width="20%"><img src="screenshots/10_my_expenses.png"/></th>
     </tr>
   </thead>
   <tbody>
