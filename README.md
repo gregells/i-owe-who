@@ -52,8 +52,8 @@ Users must sign up for an account in order to use this web-app.
       <th width="20%"><img src="screenshots/11_ledger.png"/></th>
       <th width="20%"><img src="screenshots/12_add_expense.png"/></th>
       <th width="20%"><img src="screenshots/13_expense_modal.png"/></th>
-      <!-- <th width="20%"><img src="screenshots/14_expense.png"/></th> -->
-      <!-- <th width="20%"><img src="screenshots/15_search.png"/></th> -->
+      <th width="20%"><img src="screenshots/14_expense.png"/></th>
+      <th width="20%"><img src="screenshots/15_search.png"/></th>
     </tr>
   </thead>
   <tbody>
