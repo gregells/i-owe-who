@@ -68,8 +68,8 @@ Users must sign up for an account in order to use this web-app.
 </table>
 
 ## Technologies Used:
-* __Django__: to run the backend server.
-* __Django Template Language (DTL)__: for the frontend pages.
+* __Django__: framework for the backend server.
+* __Django Template Language (DTL)__: for rendering the frontend pages.
 * __PostgreSQL__: for the database.
 * __Materialize__: to achieve the CSS layout.
 * __Amazon AWS S3__: to persist images added to expenses.
