@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 import environ
@@ -79,10 +80,23 @@ WSGI_APPLICATION = 'i_owe_who.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# Local postgres database for development and testing:
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'i_owe_who',
+#     }
+# }
+
+# Production AWS RDS database for deployment:
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'i_owe_who',
+        'NAME': 'postgres',
+        'USER': os.environ['DATABASE_USER'],
+        'PASSWORD': os.environ['DATABASE_PW'],
+        'HOST': os.environ['DATABASE_URL'],
+        'PORT': '5432'
     }
 }
 
