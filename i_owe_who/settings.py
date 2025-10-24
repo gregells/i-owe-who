@@ -35,7 +35,9 @@ SECRET_KEY = os.environ.get(
 )
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Debug mode will be automatically enabled when the project is run via `heroku local` (which
+# loads the environment variables set in the `.env` file, where `ENVIRONMENT=development`).
+DEBUG = os.environ.get("ENVIRONMENT") == "development"
 
 ALLOWED_HOSTS = []
 
