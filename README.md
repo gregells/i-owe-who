@@ -78,6 +78,8 @@ Users must sign up for an account in order to use this web-app.
 <!-- [Try the live website here.](...) -->
 There is currently no live website.
 
+The About page explains how to use the features of the web-app.
+
 The project was planned out in a Trello board, view it on Trello [here.](https://trello.com/b/zIVdZxFT/i-owe-who-project-planning)
 
 The Entity Relationship Diagram (ERD) was made using [Lucid Chart](https://www.lucidchart.com) and can be seen in the Trello board.
