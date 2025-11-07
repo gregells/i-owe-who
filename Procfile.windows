@@ -1,1 +1,2 @@
+# Needs to be updated to use Fixie Socks proxy, add env variables:
 web: python manage.py runserver %PORT%
