@@ -75,8 +75,7 @@ Users must sign up for an account in order to use this web-app.
 * __Amazon AWS S3__: to persist images added to expenses.
 
 ## Getting Started:
-<!-- [Try the live website here.](...) -->
-There is currently no live website.
+[Try the live website here.](https://i-owe-who-ecbfd09dc4e0.herokuapp.com/)
 
 The About page explains how to use the features of the web-app.
 
@@ -87,7 +86,6 @@ The Entity Relationship Diagram (ERD) was made using [Lucid Chart](https://www.l
 Wireframes of the different pages were made using [wireframe|cc](https://wireframe.cc/) and can be seen in the Trello board.
 
 ## Future Development:
-* Create a hosted version of the web-app and database.
 * Show summary of spending for the user by month.
 * Show summary of spending for the user by ledger.
 
