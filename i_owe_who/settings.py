@@ -138,20 +138,20 @@ if IS_HEROKU_APP:
 else:
     # When running locally in development or in CI, use either the production database
     # or the local postgres database (local DB not available in Heroku CI):
-    DATABASES = {
-        "default": dj_database_url.config(
-            env="DATABASE_URL",
-            conn_max_age=600,
-            conn_health_checks=True,
-            ssl_require=True,
-        ),
-    }
     # DATABASES = {
-    #     'default': {
-    #         'ENGINE': 'django.db.backends.postgresql',
-    #         'NAME': 'i_owe_who',
-    #     }
+    #     "default": dj_database_url.config(
+    #         env="DATABASE_URL",
+    #         conn_max_age=600,
+    #         conn_health_checks=True,
+    #         ssl_require=True,
+    #     ),
     # }
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'i_owe_who',
+        }
+    }
 
 
 # Password validation
